@@ -1,7 +1,7 @@
 import React from 'react'
 import '../css/card.css';
 class Card extends React.Component {
-    render () {
+    render() {
         return (
             <div id="card">
                 <p> data daalo mujh men</p>
