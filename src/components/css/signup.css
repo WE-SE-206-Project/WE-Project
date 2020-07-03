@@ -1,0 +1,14 @@
+article{ 
+	width : 38%;
+ 	height: auto;
+ 	margin : 30px;
+ 	margin-top: 135px;
+ 	/*background-image: linear-gradient(#F6F0EA, #F1DFD1);*/
+
+ }
+
+@media screen and (max-width: 800px){
+	article{
+		width : 60%;
+	}
+}

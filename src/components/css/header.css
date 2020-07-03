@@ -1,0 +1,18 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+#main-header{
+    background-image: url(../stock.jpg); 
+    width: 1349px;
+    height: 606px;
+}
+#card-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 8%;
+    
+}
+#polygon{
+    
+}

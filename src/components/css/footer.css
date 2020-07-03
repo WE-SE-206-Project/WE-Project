@@ -1,0 +1,112 @@
+#footer{
+    background-color: #181818;
+}
+#upper-footer{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 15px;
+}
+ul{
+    list-style: none;
+}
+
+#social{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.upper-footer-ul-li{
+    list-style: none;
+    text-decoration: none;
+    margin-top: 7px;
+    font-size: 13px;
+    cursor:pointer;
+    color:#646464;
+}
+.upper-footer-ul-li:hover{
+    color:white;
+}
+.social-icons{
+    transition: all 700ms ease-in-out;
+}
+.social-icons:hover{
+    cursor:pointer;
+    color:white;
+    transform: scale(1.5);
+}
+#upper-footer-subscribe{
+    text-align: center;
+    padding: 40px;
+    margin-bottom: 10px;
+}
+#subscribe-input-email{
+    border: none;
+    width: 250px;
+    padding: 8px;
+    border-radius: 15px;
+    font-size: 14px;
+    border: 1px white solid;
+}
+#subscribe-input-email:focus{
+    background-color: #181818;
+    color: white;
+}
+#subscribe-btn{
+    padding: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 15px;
+    background-color: white;
+    margin-left: 10px;
+    color:  #3d155f;
+    border: 1px solid #df678c;
+}
+#subscribe-btn:hover{
+    cursor: pointer;
+    background-color: #df678c;
+    border: 1px solid #3d155f;
+    transition: 0.9s;
+    color: #3d155f;
+    
+}
+#lower-footer{
+    width: 95%;
+    display: flex;
+    margin-top:3px;
+    padding: 15px;
+    font-size: 13px;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 2.5%;
+}
+#cash-icons{
+    display: flex;
+    align-items: center;
+}
+#footer-top-button-div{
+    display: flex;
+    justify-content: center;
+}
+.animate-going-top{
+    transform: translate(0px, 0px);
+    transition: all 700ms linear;
+}
+#footer-top-button{
+    padding: 5px 10px;
+    border-radius: 16px;
+    border:none;
+    font-size: 15px;
+    cursor: pointer;
+    color:  #3d155f;
+    border: 2px solid #df678c;
+    background-color: white;
+}
+#footer-top-button:hover{
+    background-color: #df678c;
+    border: 2px solid #3d155f;
+    transition: 0.9s;
+    color: #3d155f;
+    transform:scale(1.2);
+}

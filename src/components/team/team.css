@@ -1,0 +1,49 @@
+#profile-pic{
+    border-radius: 50%;
+    width:200px;
+    height:180px;
+    margin-bottom: 20px;
+}
+#team-card{
+    text-align: center;
+    background-color: transparent;
+    width: 300px;
+}
+#member-name{
+    margin-bottom: 10px;
+}
+.social-icon{
+    transition: all 700ms ease-in-out;
+}
+.social-icon:hover{
+    cursor:pointer;
+   
+    transform: scale(1.5);
+}
+#team{
+    display: flex;
+    justify-content: center;
+    
+    
+}
+#team-container{
+    text-align: center;
+   
+}
+#team-container-background{
+    /* background-color: slategrey; */
+}
+#team-bio1{
+    width: 50%;
+    margin-left:25%;
+}
+#team-lower{
+    background-color: teal;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 4px #888888;
+    background: linear-gradient(90deg, rgba(255,68,0,1) 25%, rgba(204,142,7,1) 77%);
+}
