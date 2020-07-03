@@ -8,6 +8,7 @@ import {
   CssBaseline
 } from '@material-ui/core';
 import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import Navbar from "./Comps/Navbar"
 
 const theme = createMuiTheme({
   palette: {
@@ -18,7 +19,7 @@ const theme = createMuiTheme({
       main: '#f7b733'
     },
     info: {
-      main: '#dfdce3'
+      main: '#fff'
     },
     success: {
       main: '#fc4a1a'
@@ -32,7 +33,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Landing />
+      {/* <Landing /> */}
+      <Navbar />
 
     </ThemeProvider>
   );
