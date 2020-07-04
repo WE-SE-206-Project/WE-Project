@@ -1,9 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
-import Landing from './components/landing';
-import Teamcard from './components/team/teamcard';
+// import logo from './logo.svg';
+// import Landing from './components/landing';
+// import Teamcard from './components/team/teamcard';
 import 'tachyons';
-import Team from './components/team/team';
+// import Team from './components/team/team';
 import {
   CssBaseline
 } from '@material-ui/core';
@@ -12,6 +12,7 @@ import Navbar from "./Comps/Navbar";
 import Header from "./Comps/Header";
 import Services from "./Comps/Services";
 import Cards from "./Comps/Cards";
+import Team from "./Comps/Team";
 
 const theme = createMuiTheme({
   palette: {
@@ -41,6 +42,7 @@ function App() {
       <Header />
       <Cards />
       <Services />
+      {/* <Team /> */}
     </ThemeProvider>
   );
 }

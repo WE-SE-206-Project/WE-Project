@@ -4,6 +4,10 @@ import '../components/css/services.css';
 import {
   Typography
 } from '@material-ui/core';
+import SettingsApplicationsIcon from '@material-ui/icons/SettingsApplications';
+import CreateIcon from '@material-ui/icons/Create';
+import PieChartIcon from '@material-ui/icons/PieChart';
+import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 
 const styles = makeStyles(theme => ({
   title: {
@@ -25,14 +29,14 @@ export default function Services() {
       {/* </div> */}
       {/* <div class="title-underline"></div> */}
       {/* </div> */}
-      <div class="services-container">
+      <div className="services-container">
 
-        <article class="services-item service-item-black">
-          <div class="front-text">
-            <i class="fa fa-cogs"></i>
+        <article className="services-item service-item-black">
+          <div className="front-text">
+            <SettingsApplicationsIcon className="fa" />
             <h1>Web Development</h1>
           </div>
-          <div class="back-text">
+          <div className="back-text">
             <h1>Web Development</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis dignissimos harum repudiandae,
             numquam natus excepturi!</p>
@@ -42,12 +46,12 @@ export default function Services() {
 
 
 
-        <article class="services-item service-item-white">
-          <div class="front-text">
-            <i class="fa fa-pen-square"></i>
+        <article className="services-item service-item-white">
+          <div className="front-text">
+            <CreateIcon className="fa" />
             <h1>Design and Branding</h1>
           </div>
-          <div class="back-text">
+          <div className="back-text">
             <h1>Design and Branding</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis dignissimos harum repudiandae,
             numquam natus excepturi!</p>
@@ -57,12 +61,12 @@ export default function Services() {
 
 
 
-        <article class="services-item service-item-black">
-          <div class="front-text">
-            <i class="fa fa-chart-pie"></i>
+        <article className="services-item service-item-black">
+          <div className="front-text">
+            <PieChartIcon className="fa" />
             <h1>Analytics</h1>
           </div>
-          <div class="back-text">
+          <div className="back-text">
             <h1>Analytics</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis dignissimos harum repudiandae,
             numquam natus excepturi!</p>
@@ -73,12 +77,12 @@ export default function Services() {
 
 
 
-        <article class="services-item service-item-white">
-          <div class="front-text">
-            <i class="fa fa-chart-line"></i>
+        <article className="services-item service-item-white">
+          <div className="front-text">
+            <TrendingUpIcon className="fa" />
             <h1>Ceo and Smm</h1>
           </div>
-          <div class="back-text">
+          <div className="back-text">
             <h1>Ceo and Smm</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis dignissimos harum repudiandae,
             numquam natus excepturi!</p>
