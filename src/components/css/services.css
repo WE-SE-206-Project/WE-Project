@@ -27,7 +27,7 @@
 .services-container .fa{
     font-size: 60px;
     margin-bottom: 30px;
-    color: #e6af2e;
+    color: #f7b733;
 }
 .service-item-black{
     background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
@@ -40,6 +40,9 @@
     text-align: center;
     transition: transform 2s;
 }
+/* .front-text h1{
+    color: #fc4a1a;
+} */
 .back-text{
     position: absolute; 
     bottom: -15em;
@@ -56,25 +59,25 @@
     margin-top: 20px;
     padding: 10px 20px;
     background: transparent;
-    border: 2px solid #e6af2e;
+    border: 2px solid #f7b733;
     font-size: 20px;
     color:  black;
 }
 .service-item-black .back-text button{
-    color: #e6af2e;
+    color: #f7b733;
 }
 .back-text button:hover{
-background-color: #e6af2e;
+background-color: #f7b733;
 color: black;
 }
 .service-item-white button{
-    background:#e6af2e;
+    background:#f7b733;
     border: black;
 }
 .service-item-white button:hover{
     background:black;
     border-color: black;
-    color: #e6af2e;
+    color: #f7b733;
 }
 .services-item:hover .front-text{
     transform: translateY(-230px);
