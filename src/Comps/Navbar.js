@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import {
   AppBar,
   Toolbar,
   Button,
   Typography,
-  IconButton
+  IconButton,
+  Popper,
+  Menu,
+  MenuList,
+  ClickAwayListener,
+  MenuItem,
+  Paper
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -40,12 +46,23 @@ const styles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       display: 'block'
     }
+  },
+  popper: {
+    zIndex: theme.zIndex.appBar + 1,
   }
 }))
 
 
 export default function Navbar() {
   const classes = styles();
+  const anchor = useRef();
+  const [open, setOpen] = useState(false);
+
+  const handleChange = (e) => setOpen(!open)
+
+  const handleClose = () => setOpen(false)
+
+
   return (
     <>
       <AppBar position="fixed" color="primary" className={classes.appbar}>
@@ -58,19 +75,12 @@ export default function Navbar() {
           <IconButton className={classes.icon} ref={anchor} onClick={handleChange}>
             <MenuIcon />
           </IconButton>
-          <Popper anchorEl={anchor.current} open={open} onClose={handleClose} >
-            <Paper>
+          <Popper anchorEl={anchor.current} open={open} onClose={handleClose} className={classes.popper}>
+            <Paper className={classes.paper}>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList variant="selectedMenu" >
-                  <MenuItem onClick={handleClose}>
-                    Profile
-                  </MenuItem>
-                  <MenuItem onClick={handleClose}>My account</MenuItem>
-                  <MenuItem onClick={handleClose}>Login</MenuItem>
-                  <MenuItem onClick={handleClose}>Register</MenuItem>
-                  <MenuItem onClick={handleClose}>Logout</MenuItem>
-                  <MenuItem onClick={handleClose} className={classes.buttontags}>Contact us</MenuItem>
-                  <MenuItem onClick={handleClose} className={classes.buttontags}>About Us</MenuItem>
+                  <MenuItem onClick={handleClose}>About Us</MenuItem>
+                  <MenuItem onClick={handleClose}>Contact Us</MenuItem>
                 </MenuList>
               </ClickAwayListener>
             </Paper>
