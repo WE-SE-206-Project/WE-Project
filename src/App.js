@@ -11,6 +11,7 @@ import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/sty
 import Navbar from "./Comps/Navbar";
 import Header from "./Comps/Header";
 import Services from "./Comps/Services";
+import Cards from "./Comps/Cards";
 
 const theme = createMuiTheme({
   palette: {
@@ -38,7 +39,8 @@ function App() {
       {/* <Landing /> */}
       <Navbar />
       <Header />
-      <Services />
+      <Cards />
+      {/* <Services /> */}
     </ThemeProvider>
   );
 }

@@ -15,10 +15,10 @@ export default function Services() {
           <article class="services-item service-item-black">
             <div class="front-text">
               <i class="fa fa-cogs"></i>
-              <h1>Web DEvelopment</h1>
+              <h1>Web Development</h1>
             </div>
             <div class="back-text">
-              <h1>Web DEvelopment</h1>
+              <h1>Web Development</h1>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis dignissimos harum repudiandae,
             numquam natus excepturi!</p>
               <button type="button">Read more</button>

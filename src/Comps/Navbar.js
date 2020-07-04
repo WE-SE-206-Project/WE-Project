@@ -18,16 +18,16 @@ const styles = makeStyles(theme => ({
   },
   heading: {
     color: '#fff',
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '1.7rem'
-    },
+    // [theme.breakpoints.down('sm')]: {
+    //   fontSize: '1.7rem'
+    // },
     [theme.breakpoints.down('xs')]: {
       fontSize: '1.4rem'
     }
   },
   btngrp: {
     marginLeft: 'auto',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       display: 'none'
     }
   },
@@ -43,7 +43,7 @@ const styles = makeStyles(theme => ({
     // marginRight: theme.spacing(1),
     marginLeft: 'auto',
     display: 'none',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       display: 'block'
     }
   }
