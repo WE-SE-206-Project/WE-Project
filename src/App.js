@@ -40,7 +40,7 @@ function App() {
       <Navbar />
       <Header />
       <Cards />
-      {/* <Services /> */}
+      <Services />
     </ThemeProvider>
   );
 }

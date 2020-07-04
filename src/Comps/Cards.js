@@ -6,16 +6,18 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const styles = makeStyles(theme => ({
   main: {
+    // position: 'fixed',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    margin: theme.spacing(3)
+    // margin: theme.spacing(3)
   },
   card: {
     padding: theme.spacing(4),
     width: '28%',
-    margin: theme.spacing(3),
-    marginTop: '-30vh',
+    // margin: theme.spacing(3),
+    marginRight: theme.spacing(3),
+    marginTop: '-199px',
     height: 300,
     transition: 'all 0.3s ease-out',
     '&:hover': {

@@ -2,20 +2,22 @@
 /* services */
 #services{
     min-height: 90vh;
-    background:url(../services.jpeg);
+    background:url(../../Asset/services.jpg);
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     padding: 20px 0 80px 0;
 }
-#title{
+/* #title{
     text-align: center;
-}
+    color: #fff;
+    margin-bottom: 15px;
+} */
 .services-container{
     max-width:90vw;
     margin:0 auto;
-    color: white;
+    color: #fff;
 }
 .services-item{
     overflow:hidden;
@@ -45,7 +47,7 @@
     margin: 0 auto;
     height: 100%;
     transition: bottom 2s;
-    padding: 30px 0;
+    padding: 60px 0;
 }
 .back-text h1{
     margin-bottom: 20px;
@@ -75,7 +77,7 @@ color: black;
     color: #e6af2e;
 }
 .services-item:hover .front-text{
-    transform: translateY(-200px);
+    transform: translateY(-230px);
 }
 .services-item:hover .back-text{
     bottom:0;
