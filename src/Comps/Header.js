@@ -13,7 +13,7 @@ const styles = makeStyles(theme => ({
   back: {
     width: '100%',
     height: '100vh',
-    backgroundColor: 'rgba(74,189,172,0.85)',
+    backgroundColor: 'rgba(74,189,172,0.3)',
     // position: 'absolute',
     zIndex: -1,
     display: 'flex',
