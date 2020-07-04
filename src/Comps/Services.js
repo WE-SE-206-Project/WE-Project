@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import '../components/css/services.css';
+import '../css/services.css';
 import {
   Typography
 } from '@material-ui/core';

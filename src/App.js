@@ -1,19 +1,9 @@
 import React from 'react';
-// import logo from './logo.svg';
-// import Landing from './components/landing';
-// import Teamcard from './components/team/teamcard';
-import 'tachyons';
-// import Team from './components/team/team';
+import Landing from './Pages/Landing';
 import {
   CssBaseline
 } from '@material-ui/core';
 import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
-import Navbar from "./Comps/Navbar";
-import Header from "./Comps/Header";
-import Services from "./Comps/Services";
-import Cards from "./Comps/Cards";
-import Team from "./Comps/Team";
-import Footer from "./Comps/Footer";
 
 const theme = createMuiTheme({
   palette: {
@@ -38,13 +28,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {/* <Landing /> */}
-      <Navbar />
-      <Header />
-      <Cards />
-      <Services />
-      <Team />
-      <Footer />
+      <Landing />
+
     </ThemeProvider>
   );
 }

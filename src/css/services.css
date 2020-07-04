@@ -1,0 +1,112 @@
+
+/* services */
+#services{
+    min-height: 90vh;
+    background:url(../Asset/services.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 20px 0 80px 0;
+}
+/* #title{
+    text-align: center;
+    color: #fff;
+    margin-bottom: 15px;
+} */
+.services-container{
+    max-width:90vw;
+    margin:0 auto;
+    color: #fff;
+    /* height: 250px; */
+}
+.services-item{
+    overflow:hidden;
+    position: relative;
+    padding:60px;
+    /* height: 290px; */
+}
+.services-container .fa{
+    font-size: 60px;
+    margin-bottom: 30px;
+    color: #f7b733;
+}
+.service-item-black{
+    background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
+}
+.service-item-white{
+    background:linear-gradient(rgba(206,208,206,0.6),rgba(206,208,206,0.6));
+    color: black;
+}
+.front-text{
+    text-align: center;
+    transition: transform 2s;
+}
+/* .front-text h1{
+    color: #fc4a1a;
+} */
+.back-text{
+    position: absolute; 
+    bottom: -15em;
+    width:75%;
+    margin: 0 auto;
+    height: 100%;
+    transition: bottom 2s;
+    padding: 60px 0;
+}
+.back-text h1{
+    margin-bottom: 20px;
+}
+.back-text button{
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: transparent;
+    border: 2px solid #f7b733;
+    font-size: 20px;
+    color:  black;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.6s;
+}
+.service-item-black .back-text button{
+    color: #f7b733;
+}
+.back-text button:hover{
+background-color: #f7b733;
+color: black;
+}
+.service-item-white button{
+    background:#f7b733;
+    border: black;
+}
+.service-item-white button:hover{
+    background:black;
+    border-color: black;
+    color: #f7b733;
+}
+.services-item:hover .front-text{
+    transform: translateY(-230px);
+}
+.services-item:hover .back-text{
+    bottom:0;
+}
+@media screen and (min-width:776px)
+{
+    .services-container{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .services-container .services-item:nth-of-type(1){
+        order: 1;
+    }
+    .services-container .services-item:nth-of-type(2){
+       order: 3;
+    }
+    .services-container .services-item:nth-of-type(3){
+        order: 4;
+    }
+    .services-container .services-item:nth-of-type(4){
+        order: 2;   
+    }
+
+}
