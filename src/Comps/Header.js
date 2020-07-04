@@ -19,7 +19,7 @@ const styles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: theme.spacing(4)
+    padding: theme.spacing(5)
   },
   heading: {
     width: '40%',
@@ -37,7 +37,7 @@ const styles = makeStyles(theme => ({
   },
   content: {
     color: '#fff',
-    width: '40%',
+    width: '50%',
     // textAlign: 'center'
   },
   // icon: {
@@ -53,9 +53,9 @@ export default function Header() {
     <>
       <img src={require('../Asset/headway.jpg')} className={classes.image} />
       <div className={classes.back}>
-        <Typography variant="h2" className={classes.heading}>Appointment Scheduling System</Typography>
+        <Typography variant="h2" className={classes.heading}><span style={{ color: '#fc4a1a', fontWeight: 'bold' }}>SCHEDULE</span><br /><span style={{ marginLeft: '30px' }}>Your Visit</span></Typography>
         {/* <EventIcon className={classes.icon} /> */}
-        <Typography variant="body1" className={classes.content}>Appointment Scheduling System content</Typography>
+        <Typography variant="h5" className={classes.content}>Appointment Scheduling System content</Typography>
       </div>
     </>
   )
