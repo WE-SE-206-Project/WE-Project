@@ -13,6 +13,7 @@ import Header from "./Comps/Header";
 import Services from "./Comps/Services";
 import Cards from "./Comps/Cards";
 import Team from "./Comps/Team";
+import Footer from "./Comps/Footer";
 
 const theme = createMuiTheme({
   palette: {
@@ -42,7 +43,8 @@ function App() {
       <Header />
       <Cards />
       <Services />
-      {/* <Team /> */}
+      <Team />
+      <Footer />
     </ThemeProvider>
   );
 }

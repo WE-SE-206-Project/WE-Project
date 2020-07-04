@@ -1,0 +1,58 @@
+#profile-pic{
+    border-radius: 50%;
+    width:200px;
+    height:200px;
+    margin-bottom: 20px;
+}
+#team-card{
+    text-align: center;
+    background-color: transparent;
+    width: 300px;
+}
+#member-name{
+    margin-bottom: 10px;
+}
+.social-icon{
+    cursor:pointer;
+    margin: 8px;
+    transition: all 3s;
+    /* transition: all 700ms ease-in-out; */
+}
+.social-icon:hover{
+    color: #fc4a1a;
+    /* cursor:pointer; */
+   
+    /* transform: scale(1.1); */
+}
+#team{
+    display: flex;
+    justify-content: center;
+    
+    
+}
+#team-container{
+    text-align: center;
+   
+}
+#team-container-background{
+    /* background-color: slategrey; */
+}
+#team-bio1{
+    width: 50%;
+    margin-left:25%;
+}
+#team-lower{
+    /* color: #fff; */
+    /* background-color: teal; */
+    margin-top: 19px;
+    padding: 19px;
+    width: 80%;
+    /* margin-left: 10%; */
+    /* margin-right: 10%; */
+    margin-bottom: 20px;
+    /* border-radius: 10px; */
+    /* box-shadow: 3px 3px 4px #888888; */
+    background: linear-gradient(90deg, #4abdac 25%, #dfdce3 99%);
+    margin-left: auto;
+    margin-right: auto;
+}
