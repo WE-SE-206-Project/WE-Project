@@ -72,7 +72,9 @@ export default function SignIn() {
         <Avatar className={classes.avatar}>
           <QueryBuilderIcon />
         </Avatar>
-
+        <Typography component="h1" variant="h5">
+          Sign In
+        </Typography>
         <form className={classes.form} noValidate method="POST" onSubmit={handleSubmit}>
           <TextField
             variant="outlined"

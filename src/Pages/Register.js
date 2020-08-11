@@ -31,7 +31,7 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(17),
+    marginTop: theme.spacing(13),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -61,7 +61,7 @@ export default function SignUpform() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up
+          Register
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>

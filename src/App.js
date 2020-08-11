@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   Landing,
-  Login
+  Login,
+  Register
 }
   from './Pages';
 import {
@@ -38,6 +39,7 @@ function App() {
       <CssBaseline />
       <Switch>
         <Route path="/login"><Login /></Route>
+        <Route path="/register"><Register /></Route>
         <Route path="/"><Landing /></Route>
 
 
