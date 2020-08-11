@@ -1,5 +1,9 @@
 import React from 'react';
-import Landing from './Pages/Landing';
+import {
+  Landing,
+  Login
+}
+  from './Pages';
 import {
   CssBaseline
 } from '@material-ui/core';
