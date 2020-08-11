@@ -5,6 +5,10 @@ import {
 }
   from './Pages';
 import {
+  Switch,
+  Route
+} from 'react-router-dom';
+import {
   CssBaseline
 } from '@material-ui/core';
 import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
@@ -32,7 +36,13 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Landing />
+      <Switch>
+        <Route path="/login"><Login /></Route>
+        <Route path="/"><Landing /></Route>
+
+
+      </Switch>
+
 
     </ThemeProvider>
   );

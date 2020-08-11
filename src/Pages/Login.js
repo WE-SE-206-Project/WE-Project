@@ -12,23 +12,31 @@ import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import {
+  Paper,
+  Input
+} from '@material-ui/core';
+import {
+  Navbar,
+  Footer
+} from '../Comps'
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Appointment Management module
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+// function Copyright() {
+//   return (
+//     <Typography variant="body2" color="textSecondary" align="center">
+//       {'Copyright © '}
+//       <Link color="inherit" href="https://material-ui.com/">
+//         Appointment Management module
+//       </Link>{' '}
+//       {new Date().getFullYear()}
+//       {'.'}
+//     </Typography>
+//   );
+// }
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(17),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -49,17 +57,24 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn() {
   const classes = useStyles();
 
+  const handleSubmit = () => {
+    const formData = new FormData(document.querySelector('form'));
+
+    console.log(formData);
+  }
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
+      <Navbar />
+
+
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <QueryBuilderIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign in
-        </Typography>
-        <form className={classes.form} noValidate>
+
+        <form className={classes.form} noValidate method="POST" onSubmit={handleSubmit}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -69,7 +84,8 @@ export default function SignIn() {
             label="Email Address"
             name="email"
             autoComplete="email"
-            autoFocus
+          // onChange={(e) => console.log(e.target.value)}
+          // autoFocus
           />
           <TextField
             variant="outlined"
@@ -82,10 +98,10 @@ export default function SignIn() {
             id="password"
             autoComplete="current-password"
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
+          {/* <FormControlLabel
+          control={<Checkbox value="remember" color="primary" />}
+          label="Remember me"
+        /> */}
           <Button
             type="submit"
             fullWidth
@@ -109,9 +125,12 @@ export default function SignIn() {
           </Grid>
         </form>
       </div>
-      <Box mt={8}>
+
+
+      {/* <Box mt={8}>
         <Copyright />
-      </Box>
+      </Box> */}
     </Container>
   );
 }
+
