@@ -17,8 +17,7 @@ import {
   Input
 } from '@material-ui/core';
 import {
-  Navbar,
-  Footer
+  Navbar
 } from '../Comps'
 
 // function Copyright() {
