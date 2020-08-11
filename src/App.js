@@ -3,7 +3,8 @@ import {
   Landing,
   Login,
   Register,
-  ContactUs
+  ContactUs,
+  Appointment
 }
   from './Pages';
 import {
@@ -39,8 +40,8 @@ const theme = createMuiTheme({
 
 function App() {
 
-  const [isAuth, setIsAuth] = useState(false);
-  const [roleSelected, setRoleSelected] = useState("user");
+  const [isAuth, setIsAuth] = useState(true);
+  const [roleSelected, setRoleSelected] = useState("org");
 
   return (
     <ThemeProvider theme={theme}>
@@ -57,9 +58,9 @@ function App() {
             <Route path="/"><Landing /></Route>
           </Switch>
           :
-          <>
-
-          </>
+          <Switch>
+            <Route path="/appointment"><Appointment /></Route>
+          </Switch>
       }
 
 

@@ -30,7 +30,8 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(13),
+    marginBottom: theme.spacing(5),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -121,8 +122,8 @@ export default function Createappointment() {
                 id="pnumber"
                 label="Phone Number"
                 placeholder="03xx-xxxxxxx"
-                inputProps={{maxLength:11, className: classes.input, pattern: "03[0-9]{2}-(?!1234567)(?!1111111)(?!7654321)[0-9]{7}" }}
-                autoFocus
+                inputProps={{ maxLength: 11, className: classes.input, pattern: "03[0-9]{2}-(?!1234567)(?!1111111)(?!7654321)[0-9]{7}" }}
+              // autoFocus
               />
             </Grid>
             <Grid item xs={12}>
@@ -145,12 +146,12 @@ export default function Createappointment() {
                 required
                 fullWidth
                 name="date"
-                label="Date"
+                label="Scheduled At"
                 type="datetime-local"
                 id="date"
                 InputLabelProps={{
-                             shrink: true,
-                                }}
+                  shrink: true,
+                }}
 
               />
             </Grid>
@@ -164,9 +165,9 @@ export default function Createappointment() {
           >
             Create Appointment
           </Button>
-          
-            
-         
+
+
+
         </form>
       </div>
       {/* <Box mt={5}>
