@@ -14,7 +14,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {
   Navbar
-} from '../Comps'
+} from '../Comps';
+import { useHistory } from 'react-router-dom';
+
 
 // function Copyright() {
 //   return (
@@ -52,6 +54,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUpform({ roleSelected }) {
   const classes = useStyles();
+  const history = useHistory();
+
 
   return (
     <Container component="main" maxWidth="xs">
@@ -167,7 +171,7 @@ export default function SignUpform({ roleSelected }) {
             <Grid item>
               <Link variant="body2" style={{
                 cursor: 'pointer'
-              }}>
+              }} onClick={() => history.push('/login')}>
                 Already have an account? Sign in
               </Link>
             </Grid>

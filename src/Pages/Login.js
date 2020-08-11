@@ -18,7 +18,9 @@ import {
 } from '@material-ui/core';
 import {
   Navbar
-} from '../Comps'
+} from '../Comps';
+import { useHistory } from 'react-router-dom';
+
 
 // function Copyright() {
 //   return (
@@ -56,6 +58,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn({ roleSelected }) {
   const classes = useStyles();
+  const history = useHistory();
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -125,7 +129,7 @@ export default function SignIn({ roleSelected }) {
             <Grid item>
               <Link variant="body2" style={{
                 cursor: 'pointer'
-              }}>
+              }} onClick={() => history.push('/register')}>
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
