@@ -32,6 +32,7 @@ import {
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(13),
+    marginBottom: theme.spacing(5),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -49,45 +50,65 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUpform() {
+export default function SignUpform({ roleSelected }) {
   const classes = useStyles();
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <Navbar />
+      {/* <Navbar /> */}
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Register
+          Register As {roleSelected === 'org' ? "Organization" : "User"}
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid>
+            {
+              roleSelected === 'org'
+                ?
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="name"
+                    label="Name"
+                    name="name"
+                  // autoComplete="name"
+                  />
+                </Grid>
+                :
+                <>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      autoComplete="fname"
+                      name="firstName"
+                      variant="outlined"
+                      required
+                      fullWidth
+                      id="firstName"
+                      label="First Name"
+                      autoFocus
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      variant="outlined"
+                      required
+                      fullWidth
+                      id="lastName"
+                      label="Last Name"
+                      name="lastName"
+                      autoComplete="lname"
+                    />
+                  </Grid>
+                </>
+
+            }
+
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -110,7 +131,7 @@ export default function SignUpform() {
                 label="Phone Number"
                 placeholder="03xx-xxxxxxx"
                 inputProps={{ maxLength: 11, className: classes.input, pattern: "03[0-9]{2}-(?!1234567)(?!1111111)(?!7654321)[0-9]{7}" }}
-                autoFocus
+              // autoFocus
               />
             </Grid>
             <Grid item xs={12}>
@@ -140,11 +161,13 @@ export default function SignUpform() {
             color="primary"
             className={classes.submit}
           >
-            Sign Up
+            Register
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link variant="body2" style={{
+                cursor: 'pointer'
+              }}>
                 Already have an account? Sign in
               </Link>
             </Grid>

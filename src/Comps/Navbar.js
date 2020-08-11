@@ -14,6 +14,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
+import { useHistory } from 'react-router-dom';
 
 const styles = makeStyles(theme => ({
   appbar: {
@@ -53,10 +54,11 @@ const styles = makeStyles(theme => ({
 }))
 
 
-export default function Navbar() {
+export default function Navbar({ isAuth }) {
   const classes = styles();
   const anchor = useRef();
   const [open, setOpen] = useState(false);
+  const history = useHistory();
 
   const handleChange = (e) => setOpen(!open)
 
@@ -69,8 +71,23 @@ export default function Navbar() {
         <Toolbar className={classes.toolbar}>
           <Typography variant="h4" className={classes.heading}>Appointment Scheduler</Typography>
           <div className={classes.btngrp}>
-            <Button className={classes.btn}>About Us</Button>
-            <Button className={classes.btn}>Contact Us</Button>
+            {
+              !isAuth
+                ?
+                <>
+                  <Button className={classes.btn}>About Us</Button>
+                  <Button className={classes.btn} onClick={() => history.push('/contact_us')}>Contact Us</Button>
+                </>
+                :
+                <>
+                  <Button className={classes.btn}>Profile</Button>
+                  <Button className={classes.btn}>Dashboard</Button>
+                  <Button className={classes.btn}>Create Appointment</Button>
+
+                  {/* <Button className={classes.btn}>About Us</Button> */}
+                </>
+            }
+
           </div>
           <IconButton className={classes.icon} ref={anchor} onClick={handleChange}>
             <MenuIcon />
@@ -79,8 +96,21 @@ export default function Navbar() {
             <Paper className={classes.paper}>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList variant="selectedMenu" >
-                  <MenuItem onClick={handleClose}>About Us</MenuItem>
-                  <MenuItem onClick={handleClose}>Contact Us</MenuItem>
+                  {
+                    !isAuth
+                      ?
+                      <>
+                        <MenuItem onClick={handleClose}>About Us</MenuItem>
+                        <MenuItem onClick={() => history.push('/contact_us')}>Contact Us</MenuItem>
+                      </>
+                      :
+                      <>
+                        <MenuItem>Profile</MenuItem>
+                        <MenuItem>Dashboard</MenuItem>
+                        <MenuItem>Create Appointment</MenuItem>
+                      </>
+                  }
+
                 </MenuList>
               </ClickAwayListener>
             </Paper>

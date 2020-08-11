@@ -11,7 +11,7 @@ import {
 export default function Landing() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Header />
       <Cards />
       <Services />
