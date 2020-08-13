@@ -20,6 +20,7 @@ import {
   Navbar
 } from '../comps';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 // function Copyright() {
@@ -56,9 +57,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn({ roleSelected }) {
+export default function SignIn() {
   const classes = useStyles();
   const history = useHistory();
+  const role = useSelector(state => state.unauth.role);
 
 
   const handleSubmit = (e) => {
@@ -79,7 +81,7 @@ export default function SignIn({ roleSelected }) {
           <QueryBuilderIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Login As {roleSelected === 'org' ? "Organization" : "User"}
+          Login As {role === 'org' ? "Organization" : "User"}
         </Typography>
         <form className={classes.form} noValidate method="POST" onSubmit={handleSubmit}>
           <TextField

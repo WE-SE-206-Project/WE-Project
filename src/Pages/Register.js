@@ -16,6 +16,7 @@ import {
   Navbar
 } from '../comps';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 // function Copyright() {
@@ -52,9 +53,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUpform({ roleSelected }) {
+export default function SignUpform() {
   const classes = useStyles();
   const history = useHistory();
+  const role = useSelector(state => state.unauth.role);
+
 
 
   return (
@@ -66,12 +69,12 @@ export default function SignUpform({ roleSelected }) {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Register As {roleSelected === 'org' ? "Organization" : "User"}
+          Register As {role === 'org' ? "Organization" : "User"}
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
             {
-              roleSelected === 'org'
+              role === 'org'
                 ?
                 <Grid item xs={12}>
                   <TextField
