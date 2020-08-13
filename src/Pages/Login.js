@@ -70,11 +70,11 @@ export default function SignIn() {
 
   useEffect(() => {
     setEmailError(validateEmail(email));
-    // console.log(validateEmail(email))
+    console.log(validateEmail(email))
   }, [email, setEmail])
 
   const handleSubmit = (e) => {
-    if (email.length > 0 && emailError && password.length > 0) {
+    if (email.length > 0 && !emailError && password.length > 0) {
       console.log({
         email, password
       })

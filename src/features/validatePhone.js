@@ -3,5 +3,5 @@ export default function validateEmail(phone) {
   // return re.test(phone);
   var phoneRe = /^[0]\d{0}[3]\d{0}\d{9}$/;
   var digits = phone.replace(/\D/g, "");
-  return phoneRe.test(digits);
+  return !phoneRe.test(digits);
 }

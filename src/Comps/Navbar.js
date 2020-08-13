@@ -69,7 +69,7 @@ export default function Navbar() {
   const handleClose = () => setOpen(false)
 
   useEffect(() => {
-    console.log({ auth })
+    // console.log({ auth })
   }, [])
 
 

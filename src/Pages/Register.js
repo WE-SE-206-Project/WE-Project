@@ -76,8 +76,40 @@ export default function SignUpform() {
   }, [email, setEmail])
   useEffect(() => {
     setPhoneError(validatePhone(phone));
-    console.log(validatePhone(phone))
+    // console.log(validatePhone(phone))
   }, [phone, setPhone])
+
+  const handleSubmit = () => {
+    if (
+      email.length > 0
+      && !emailError
+      && phone.length > 0
+      && !phoneError
+      && password.length > 0
+    ) {
+      let obj = {
+        email,
+        phone,
+        password
+      };
+
+      if (role === 'org' && name.length > 0) {
+        console.log({
+          ...obj,
+          name
+        })
+      }
+      else if (role === 'user' && fName.length > 0 && lName.length > 0) {
+        console.log({
+          ...obj,
+          fName,
+          lName
+        })
+      }
+
+
+    }
+  }
 
 
   return (
@@ -106,8 +138,8 @@ export default function SignUpform() {
                     name="name"
                     autoFocus
                     autoComplete="name"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </Grid>
                 :
@@ -122,8 +154,8 @@ export default function SignUpform() {
                       id="firstName"
                       label="First Name"
                       autoFocus
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
+                      value={fName}
+                      onChange={(e) => setFName(e.target.value)}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
@@ -135,8 +167,8 @@ export default function SignUpform() {
                       label="Last Name"
                       name="lastName"
                       autoComplete="lname"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
+                      value={lName}
+                      onChange={(e) => setLName(e.target.value)}
                     />
                   </Grid>
                 </>
@@ -152,8 +184,8 @@ export default function SignUpform() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} >
@@ -202,6 +234,7 @@ export default function SignUpform() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleSubmit}
           >
             Register
           </Button>
