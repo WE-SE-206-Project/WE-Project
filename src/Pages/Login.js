@@ -106,8 +106,8 @@ export default function SignIn() {
             autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-          // onChange={(e) => console.log(e.target.value)}
-          // autoFocus
+            // onChange={(e) => console.log(e.target.value)}
+            autoFocus
           />
           <TextField
             variant="outlined"
