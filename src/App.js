@@ -43,7 +43,7 @@ const theme = createMuiTheme({
 function App() {
 
   // const [isAuth, setIsAuth] = useState(false);
-  const auth = useSelector(state => state.auth.auth)
+  const auth = useSelector(state => state.auth.auth);
 
   return (
     <ThemeProvider theme={theme}>
@@ -51,7 +51,7 @@ function App() {
       <Navbar />
 
       {
-        !auth
+        !auth.status
           ?
           <Switch>
             <Route path="/login"><Login /></Route>

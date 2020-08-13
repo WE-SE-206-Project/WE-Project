@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -15,6 +15,8 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 
 const styles = makeStyles(theme => ({
   appbar: {
@@ -54,15 +56,21 @@ const styles = makeStyles(theme => ({
 }))
 
 
-export default function Navbar({ isAuth }) {
+export default function Navbar() {
   const classes = styles();
   const anchor = useRef();
   const [open, setOpen] = useState(false);
   const history = useHistory();
+  const auth = useSelector(state => state.auth.auth);
+
 
   const handleChange = (e) => setOpen(!open)
 
   const handleClose = () => setOpen(false)
+
+  useEffect(() => {
+    console.log({ auth })
+  }, [])
 
 
   return (
@@ -72,7 +80,7 @@ export default function Navbar({ isAuth }) {
           <Typography variant="h4" className={classes.heading}>Appointment Scheduler</Typography>
           <div className={classes.btngrp}>
             {
-              !isAuth
+              !auth.status
                 ?
                 <>
                   <Button className={classes.btn}>About Us</Button>
@@ -97,7 +105,7 @@ export default function Navbar({ isAuth }) {
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList variant="selectedMenu" >
                   {
-                    !isAuth
+                    !auth.status
                       ?
                       <>
                         <MenuItem onClick={handleClose}>About Us</MenuItem>
