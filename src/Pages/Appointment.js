@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,6 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import EventIcon from '@material-ui/icons/Event';
+import validateEmail from '../features/validateEmail';
+import validatePhone from '../features/validatePhone';
 
 
 // function Copyright() {
@@ -52,6 +54,50 @@ const useStyles = makeStyles((theme) => ({
 export default function Createappointment() {
   const classes = useStyles();
 
+  const [fName, setFName] = useState("");
+  const [lName, setLName] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [reason, setReason] = useState("");
+  const [date, setDate] = useState("");
+  const [phone, setPhone] = useState("");
+  const [emailError, setEmailError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
+
+  useEffect(() => {
+    setEmailError(validateEmail(email));
+    // console.log(validateEmail(email))
+  }, [email, setEmail])
+
+  useEffect(() => {
+    setPhoneError(validatePhone(phone));
+    // console.log(validatePhone(phone))
+  }, [phone, setPhone])
+
+  const handleSubmit = () => {
+    if (
+      email.length > 0
+      && !emailError
+      && phone.length > 0
+      && !phoneError
+      && fName.length > 0
+      && lName.length > 0
+      && address.length > 0
+      && reason.length > 0
+      && date.length > 0
+    ) {
+      console.log({
+        fName,
+        lName,
+        email,
+        phone,
+        reason,
+        address,
+        date
+      })
+    }
+  }
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -74,6 +120,8 @@ export default function Createappointment() {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                value={fName}
+                onChange={(e) => setFName(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -85,6 +133,8 @@ export default function Createappointment() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                value={lName}
+                onChange={(e) => setLName(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -96,6 +146,8 @@ export default function Createappointment() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -110,6 +162,8 @@ export default function Createappointment() {
                 multiline={true}
                 rows={3}
                 maxrows={2}
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} >
@@ -122,7 +176,11 @@ export default function Createappointment() {
                 id="pnumber"
                 label="Phone Number"
                 placeholder="03xx-xxxxxxx"
-                inputProps={{ maxLength: 11, className: classes.input, pattern: "03[0-9]{2}-(?!1234567)(?!1111111)(?!7654321)[0-9]{7}" }}
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                inputProps={{
+                  maxLength: 11
+                }}
               // autoFocus
               />
             </Grid>
@@ -138,6 +196,8 @@ export default function Createappointment() {
                 multiline={true}
                 rows={3}
                 maxrows={2}
+                value={reason}
+                onChange={(e) => setReason(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -155,6 +215,8 @@ export default function Createappointment() {
                 inputProps={{
                   step: 1800 // 5 min
                 }}
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
 
               />
             </Grid>
@@ -165,7 +227,7 @@ export default function Createappointment() {
             variant="contained"
             color="primary"
             className={classes.submit}
-          // onClick
+            onClick={handleSubmit}
 
           >
             Create Appointment

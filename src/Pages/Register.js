@@ -86,7 +86,7 @@ export default function SignUpform() {
       && !emailError
       && phone.length > 0
       && !phoneError
-      && password.length > 0
+      && password.length >= 4
     ) {
       let obj = {
         email,
@@ -213,7 +213,7 @@ export default function SignUpform() {
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label="Password (Minimum four digits)"
                 type="password"
                 id="password"
                 // autoComplete="current-password"
