@@ -32,7 +32,7 @@ export default function Cards() {
     <div className={classes.main}>
       <Paper className={classes.card}>Hello</Paper>
       <Paper className={classes.card}>Hello</Paper>
-      <Paper className={classes.card}>Hello</Paper>
+      {/* <Paper className={classes.card}>Hello</Paper> */}
     </div>
   )
 }

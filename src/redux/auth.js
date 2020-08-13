@@ -26,15 +26,15 @@ const slice = createSlice({
       state.company = {};
     },
     setAuth: (state, { payload }) => {
-      state.auth = payload.auth;
+      state.auth = payload;
       localStorage.setItem("auth", JSON.stringify(payload.auth))
     },
     setUser: (state, { payload }) => {
-      state.user = payload.user;
+      state.user = payload;
       localStorage.setItem("user", JSON.stringify(payload.user))
     },
     setCompany: (state, { payload }) => {
-      state.company = payload.company;
+      state.company = payload;
       localStorage.setItem("company", JSON.stringify(payload.company))
     }
   }
