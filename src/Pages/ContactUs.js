@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -15,7 +15,9 @@ import Container from '@material-ui/core/Container';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import {
   Navbar
-} from '../comps'
+} from '../comps';
+import validateEmail from '../features/validateEmail';
+
 
 // function Copyright() {
 //   return (
@@ -53,6 +55,31 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUpform() {
   const classes = useStyles();
+  const [fName, setFName] = useState("");
+  const [lName, setLName] = useState("");
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState(false);
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    setEmailError(validateEmail(email));
+    // console.log(validateEmail(email))
+  }, [email, setEmail])
+
+  const handleSubmit = () => {
+    if (email.length > 0 && !emailError && fName.length > 0 && lName.length > 0 && message.length > 0) {
+      console.log({
+        fName,
+        lName,
+        email,
+        message
+      })
+    }
+    // else {
+    //   console.log('FUCK')
+    // }
+    // console.log(email.length > 0, !emailError, fName.length > 0, lName.length > 0, message.length > 0)
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -77,6 +104,8 @@ export default function SignUpform() {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                value={fName}
+                onChange={(e) => setFName(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -88,6 +117,8 @@ export default function SignUpform() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                value={lName}
+                onChange={(e) => setLName(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -99,6 +130,8 @@ export default function SignUpform() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -112,6 +145,8 @@ export default function SignUpform() {
                 multiline={true}
                 rowsMax={6}
                 rows={6}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
               />
             </Grid>
 
@@ -123,6 +158,7 @@ export default function SignUpform() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleSubmit}
           >
             Send Mail
           </Button>
