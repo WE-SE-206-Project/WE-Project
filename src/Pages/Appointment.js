@@ -15,18 +15,18 @@ import Container from '@material-ui/core/Container';
 import EventIcon from '@material-ui/icons/Event';
 
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+// function Copyright() {
+//   return (
+//     <Typography variant="body2" color="textSecondary" align="center">
+//       {'Copyright © '}
+//       <Link color="inherit" href="https://material-ui.com/">
+//         Your Website
+//       </Link>{' '}
+//       {new Date().getFullYear()}
+//       {'.'}
+//     </Typography>
+//   );
+// }
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -146,22 +146,27 @@ export default function Createappointment() {
                 required
                 fullWidth
                 name="date"
-                label="Scheduled At"
+                label="Scheduled At (Kindly select time in half hour format)"
                 type="datetime-local"
                 id="date"
                 InputLabelProps={{
                   shrink: true,
+                }}
+                inputProps={{
+                  step: 1800 // 5 min
                 }}
 
               />
             </Grid>
           </Grid>
           <Button
-            type="submit"
+            // type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+          // onClick
+
           >
             Create Appointment
           </Button>

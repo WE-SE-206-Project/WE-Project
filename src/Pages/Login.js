@@ -83,7 +83,7 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Login As {role === 'org' ? "Organization" : "User"}
         </Typography>
-        <form className={classes.form} noValidate method="POST" onSubmit={handleSubmit}>
+        <form className={classes.form} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
@@ -112,7 +112,7 @@ export default function SignIn() {
           label="Remember me"
         /> */}
           <Button
-            type="submit"
+            // type="submit"
             fullWidth
             variant="contained"
             color="primary"
