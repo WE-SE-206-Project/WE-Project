@@ -40,8 +40,8 @@ const theme = createMuiTheme({
 
 function App() {
 
-  const [isAuth, setIsAuth] = useState(true);
-  const [roleSelected, setRoleSelected] = useState("org");
+  const [isAuth, setIsAuth] = useState(false);
+  const [roleSelected, setRoleSelected] = useState("user");
 
   return (
     <ThemeProvider theme={theme}>
