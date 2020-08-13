@@ -17,7 +17,9 @@ import {
 import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import {
   Navbar
-} from './comps'
+} from './comps';
+import { useSelector } from 'react-redux';
+
 
 const theme = createMuiTheme({
   palette: {
@@ -40,15 +42,16 @@ const theme = createMuiTheme({
 
 function App() {
 
-  const [isAuth, setIsAuth] = useState(false);
+  // const [isAuth, setIsAuth] = useState(false);
+  const auth = useSelector(state => state.auth.auth)
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Navbar isAuth={isAuth} />
+      <Navbar />
 
       {
-        !isAuth
+        !auth
           ?
           <Switch>
             <Route path="/login"><Login /></Route>
