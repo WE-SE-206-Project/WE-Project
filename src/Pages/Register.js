@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -16,6 +16,8 @@ import {
   Navbar
 } from '../comps';
 import { useHistory } from 'react-router-dom';
+import validateEmail from '../features/validateEmail';
+import validatePhone from '../features/validatePhone';
 import { useSelector } from 'react-redux';
 
 
@@ -57,7 +59,25 @@ export default function SignUpform() {
   const classes = useStyles();
   const history = useHistory();
   const role = useSelector(state => state.unauth.role);
+  const [fName, setFName] = useState("");
+  const [lName, setLName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const [emailError, setEmailError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
+  const [name, setName] = useState("");
 
+
+
+  useEffect(() => {
+    setEmailError(validateEmail(email));
+    // console.log(validateEmail(email))
+  }, [email, setEmail])
+  useEffect(() => {
+    setPhoneError(validatePhone(phone));
+    console.log(validatePhone(phone))
+  }, [phone, setPhone])
 
 
   return (
@@ -84,7 +104,10 @@ export default function SignUpform() {
                     id="name"
                     label="Name"
                     name="name"
-                  // autoComplete="name"
+                    autoFocus
+                    autoComplete="name"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
                   />
                 </Grid>
                 :
@@ -99,6 +122,8 @@ export default function SignUpform() {
                       id="firstName"
                       label="First Name"
                       autoFocus
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
@@ -110,6 +135,8 @@ export default function SignUpform() {
                       label="Last Name"
                       name="lastName"
                       autoComplete="lname"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
                     />
                   </Grid>
                 </>
@@ -125,6 +152,8 @@ export default function SignUpform() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} >
@@ -137,7 +166,11 @@ export default function SignUpform() {
                 id="pnumber"
                 label="Phone Number"
                 placeholder="03xx-xxxxxxx"
-                inputProps={{ maxLength: 11, className: classes.input, pattern: "03[0-9]{2}-(?!1234567)(?!1111111)(?!7654321)[0-9]{7}" }}
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                inputProps={{
+                  maxLength: 11
+                }}
               // autoFocus
               />
             </Grid>
@@ -150,7 +183,9 @@ export default function SignUpform() {
                 label="Password"
                 type="password"
                 id="password"
-                autoComplete="current-password"
+                // autoComplete="current-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </Grid>
 
