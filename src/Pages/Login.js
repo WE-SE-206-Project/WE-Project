@@ -18,7 +18,7 @@ import {
 } from '@material-ui/core';
 import {
   Navbar
-} from '../Comps';
+} from '../comps';
 import { useHistory } from 'react-router-dom';
 
 

@@ -6,7 +6,7 @@ import {
   Services,
   Team,
   Footer
-} from '../Comps'
+} from '../comps'
 
 export default function Landing() {
   return (

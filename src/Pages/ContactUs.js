@@ -15,7 +15,7 @@ import Container from '@material-ui/core/Container';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import {
   Navbar
-} from '../Comps'
+} from '../comps'
 
 // function Copyright() {
 //   return (

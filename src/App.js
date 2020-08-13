@@ -6,7 +6,7 @@ import {
   ContactUs,
   Appointment
 }
-  from './Pages';
+  from './pages';
 import {
   Switch,
   Route
@@ -17,7 +17,7 @@ import {
 import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import {
   Navbar
-} from './Comps'
+} from './comps'
 
 const theme = createMuiTheme({
   palette: {

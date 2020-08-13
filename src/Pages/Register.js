@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {
   Navbar
-} from '../Comps';
+} from '../comps';
 import { useHistory } from 'react-router-dom';
 
 
