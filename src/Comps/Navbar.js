@@ -90,7 +90,7 @@ export default function Navbar() {
                 <>
                   <Button className={classes.btn}>Profile</Button>
                   <Button className={classes.btn}>Dashboard</Button>
-                  <Button className={classes.btn}>Create Appointment</Button>
+                  <Button className={classes.btn} onClick={() => history.push('/appointment')}>Create Appointment</Button>
 
                   {/* <Button className={classes.btn}>About Us</Button> */}
                 </>
@@ -118,7 +118,10 @@ export default function Navbar() {
                       <>
                         <MenuItem>Profile</MenuItem>
                         <MenuItem>Dashboard</MenuItem>
-                        <MenuItem>Create Appointment</MenuItem>
+                        <MenuItem onClick={() => {
+                          handleClose();
+                          history.push('/appointment');
+                        }}>Create Appointment</MenuItem>
                       </>
                   }
 

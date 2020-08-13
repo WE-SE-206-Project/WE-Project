@@ -74,6 +74,7 @@ export default function SignUpform() {
     setEmailError(validateEmail(email));
     // console.log(validateEmail(email))
   }, [email, setEmail])
+
   useEffect(() => {
     setPhoneError(validatePhone(phone));
     // console.log(validatePhone(phone))
