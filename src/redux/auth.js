@@ -13,9 +13,9 @@ const slice = createSlice({
   },
   reducers: {
     login: (state, { payload }) => {
-      state.auth = payload.auth,
-        state.user = payload.user,
-        state.company = payload.company
+      state.auth = payload.auth;
+      state.user = payload.user;
+      state.company = payload.company;
     },
     logout: (state) => {
       localStorage.removeItem("user");
@@ -42,10 +42,10 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-export {
+export const {
   login,
   logout,
   setAuth,
   setCompany,
   setUser
-}
+} = slice.actions
