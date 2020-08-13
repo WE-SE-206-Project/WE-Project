@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -21,6 +21,7 @@ import {
 } from '../comps';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import validateEmail from '../features/validateEmail';
 
 
 // function Copyright() {
@@ -61,13 +62,23 @@ export default function SignIn() {
   const classes = useStyles();
   const history = useHistory();
   const role = useSelector(state => state.unauth.role);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState(false);
+  // const [emailError, setEmailError] = useState(false);
 
+
+  useEffect(() => {
+    setEmailError(validateEmail(email));
+    // console.log(validateEmail(email))
+  }, [email, setEmail])
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    // const formData = new FormData(document.querySelector('form'));
-
-    // console.log(formData);
+    if (email.length > 0 && emailError && password.length > 0) {
+      console.log({
+        email, password
+      })
+    }
   }
 
   return (
@@ -93,6 +104,8 @@ export default function SignIn() {
             label="Email Address"
             name="email"
             autoComplete="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           // onChange={(e) => console.log(e.target.value)}
           // autoFocus
           />
@@ -105,7 +118,9 @@ export default function SignIn() {
             label="Password"
             type="password"
             id="password"
-            autoComplete="current-password"
+            // autoComplete="current-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           {/* <FormControlLabel
           control={<Checkbox value="remember" color="primary" />}
@@ -117,6 +132,7 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleSubmit}
           >
             Login
           </Button>
