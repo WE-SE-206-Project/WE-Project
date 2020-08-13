@@ -109,7 +109,10 @@ export default function Navbar() {
                       ?
                       <>
                         <MenuItem onClick={handleClose}>About Us</MenuItem>
-                        <MenuItem onClick={() => history.push('/contact_us')}>Contact Us</MenuItem>
+                        <MenuItem onClick={() => {
+                          handleClose();
+                          history.push('/contact_us');
+                        }}>Contact Us</MenuItem>
                       </>
                       :
                       <>
