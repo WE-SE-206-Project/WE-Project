@@ -18,7 +18,7 @@ import {
 } from '@material-ui/core';
 import {
   Navbar
-} from '../comps';
+} from '../Comps';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import validateEmail from '../features/validateEmail';
