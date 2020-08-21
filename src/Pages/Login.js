@@ -22,7 +22,8 @@ import {
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import validateEmail from '../features/validateEmail';
-
+import api from '../api/api';
+import Loader from 'react-loader-spinner';
 
 // function Copyright() {
 //   return (
@@ -65,19 +66,42 @@ export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(false);
+  const [err, setErr] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
   // const [emailError, setEmailError] = useState(false);
 
 
   useEffect(() => {
     setEmailError(validateEmail(email));
-    console.log(validateEmail(email))
+    // console.log(validateEmail(email))
   }, [email, setEmail])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     if (email.length > 0 && !emailError && password.length > 0) {
       console.log({
         email, password
       })
+      // if (role === 'org') {
+      setLoading(true)
+      await api.post(`/${role === 'org' ? "org" : "users"}/login`, {
+        email,
+        password
+      })
+        .then(resp => {
+
+          setSuccess(true)
+          setLoading(false)
+          setEmail("");
+          setPassword("");
+          console.log({ resp })
+        })
+        .catch(err => {
+          console.error(err);
+          setErr(true);
+          setLoading(false)
+        })
+      // }
     }
   }
 
@@ -85,75 +109,102 @@ export default function SignIn() {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       {/* <Navbar /> */}
-
-
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <QueryBuilderIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Login As {role === 'org' ? "Organization" : "User"}
-        </Typography>
-        <form className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            // onChange={(e) => console.log(e.target.value)}
-            autoFocus
+      {
+        loading
+          ?
+          <Loader type="Rings" color="#4abdac" height={100} width={80}
+            style={{
+              marginTop: '40vh',
+              display: 'block',
+              // marginLeft: 'auto',
+              // marginRight: 'auto',
+              // width: '100vh',
+              // height: '100%',
+              // marginLeft: '',
+              // transform: 'translate(-50%,-50%)',
+              // backgroundColor: 'red'
+            }}
           />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            // autoComplete="current-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {/* <FormControlLabel
+          :
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <QueryBuilderIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Login As {role === 'org' ? "Organization" : "User"}
+            </Typography>
+            <form className={classes.form} noValidate>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                // onChange={(e) => console.log(e.target.value)}
+                autoFocus
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                // autoComplete="current-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              {/* <FormControlLabel
           control={<Checkbox value="remember" color="primary" />}
           label="Remember me"
         /> */}
-          <Button
-            // type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            onClick={handleSubmit}
-          >
-            Login
+              <Button
+                // type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                onClick={handleSubmit}
+              >
+                Login
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link variant="body2" style={{
-                cursor: 'pointer'
-              }}>
-                Forgot password?
+              {
+                err
+                &&
+                <span style={{
+                  color: 'red'
+                }}>
+                  Invalid credentials.
+            </span>
+              }
+              <Grid container>
+                <Grid item xs>
+                  <Link variant="body2" style={{
+                    cursor: 'pointer'
+                  }}>
+                    Forgot password?
               </Link>
-            </Grid>
-            <Grid item>
-              <Link variant="body2" style={{
-                cursor: 'pointer'
-              }} onClick={() => history.push('/register')}>
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
+                </Grid>
+                <Grid item>
+                  <Link variant="body2" style={{
+                    cursor: 'pointer'
+                  }} onClick={() => history.push('/register')}>
+                    {"Don't have an account? Sign Up"}
+                  </Link>
+                </Grid>
+              </Grid>
+            </form>
+          </div>
+      }
+
+
 
 
       {/* <Box mt={8}>

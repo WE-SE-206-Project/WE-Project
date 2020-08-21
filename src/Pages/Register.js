@@ -105,6 +105,27 @@ export default function SignUpform() {
           ...obj,
           name
         })
+        setLoading(true)
+        await api.post('/org/register', {
+          ...obj,
+          name
+        })
+          .then(resp => {
+
+            setSuccess(true)
+            setLoading(false)
+            setName("");
+            setPhone("");
+            setEmail("");
+            setPassword("");
+            console.log({ resp })
+          })
+          .catch(err => {
+            console.error(err);
+            setErr(true);
+            setLoading(false)
+          })
+
       }
       else if (role === 'user' && fName.length > 0 && lName.length > 0) {
         console.log({

@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const slice = createSlice({
   name: 'unauth',
   initialState: {
-    role: 'user'
+    role: 'org'
   },
   reducers: {
     setRole: (state, { payload }) => {
