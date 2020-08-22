@@ -141,14 +141,20 @@ export default function SignUpform() {
         })
           .then(resp => {
 
-            setSuccess(true)
-            setLoading(false)
-            setFName("");
-            setLName("");
-            setPhone("");
-            setEmail("");
-            setPassword("");
+            if (resp.data.status) {
+              // setSuccess(true)
+              setFName("");
+              setLName("");
+              setPhone("");
+              setEmail("");
+              setPassword("");
+              history.push('/login');
+            }
+            else {
+              setErr(true);
+            }
             console.log({ resp })
+            setLoading(false)
           })
           .catch(err => {
             console.error(err);
@@ -325,7 +331,7 @@ export default function SignUpform() {
             </span>
               }
               <br />
-              {
+              {/* {
                 success
                 &&
                 <span style={{
@@ -335,7 +341,7 @@ export default function SignUpform() {
                 }}>
                   Sucessfully created your account.
             </span>
-              }
+              } */}
               <Grid container justify="flex-end">
                 <Grid item>
                   <Link variant="body2" style={{
