@@ -40,16 +40,17 @@
 #team-bio1{
     width: 50%;
     margin-left:25%;
+    margin-top: 4rem;
 }
 #team-lower{
     /* color: #fff; */
     /* background-color: teal; */
-    margin-top: 19px;
+    margin-top: 7rem;
     padding: 19px;
     width: 80%;
     /* margin-left: 10%; */
     /* margin-right: 10%; */
-    margin-bottom: 20px;
+    margin-bottom: 7rem;
     /* border-radius: 10px; */
     /* box-shadow: 3px 3px 4px #888888; */
     background: linear-gradient(90deg, #4abdac 25%, #dfdce3 99%);

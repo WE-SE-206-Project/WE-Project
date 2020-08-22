@@ -157,11 +157,14 @@ export default function Profile() {
       {
         loading
           ?
-          <Loader type="Rings" color="#4abdac" height={100} width={80}
-            style={{
-              marginTop: '40vh',
-              display: 'block',
-            }}
+          <Loader type="TailSpin" color="#4abdac" height={100} width={80}
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            alignContent: 'center',
+            marginTop:'35vh',
+        }}
           />
           :
           <div className={classes.paper}>

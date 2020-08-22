@@ -30,7 +30,6 @@ export default function TeamCard(props) {
         <IconButton className={classes.icon}><FacebookIcon /></IconButton>
         <IconButton className={classes.icon}><GitHubIcon /></IconButton>
         <IconButton className={classes.icon}><InstagramIcon /></IconButton>
-        <IconButton className={classes.icon}><TwitterIcon /></IconButton>
       </div>
 
     </div>

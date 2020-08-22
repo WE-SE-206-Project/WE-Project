@@ -20,9 +20,6 @@ const slice = createSlice({
       // console.log({ payload })
       if (payload.auth.token) {
         api.defaults.headers.common["Authorization"] = payload.auth.token;
-        // console.log(api.defaults.headers.common["Authorization"]);
-
-        // console.log("WORKING")
       }
     },
     logout: (state) => {
