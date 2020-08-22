@@ -5,7 +5,8 @@ import {
   Login,
   Register,
   ContactUs,
-  Appointment
+  Appointment,
+  AboutUs
 }
   from './Pages';
 import {
@@ -107,7 +108,7 @@ function App() {
           />
           :
           <>
-            <Navbar /> 
+            <Navbar />
 
             {
               !auth.status
@@ -116,6 +117,7 @@ function App() {
                   <Route path="/login"><Login /></Route>
                   <Route path="/register"><Register /></Route>
                   <Route path="/contact_us"><ContactUs /></Route>
+                  <Route path="/about_us"><AboutUs /></Route>
                   <Route path="/"><Landing /></Route>
                 </Switch>
                 :
@@ -124,9 +126,9 @@ function App() {
                 </Switch>
             }
           </>
-}
+      }
 
-      
+
     </ThemeProvider>
 
   );
