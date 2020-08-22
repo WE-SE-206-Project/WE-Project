@@ -162,18 +162,14 @@ export default function SignIn() {
       {
         loading
           ?
-          <Loader type="Rings" color="#4abdac" height={100} width={80}
-            style={{
-              marginTop: '40vh',
-              display: 'block',
-              // marginLeft: 'auto',
-              // marginRight: 'auto',
-              // width: '100vh',
-              // height: '100%',
-              // marginLeft: '',
-              // transform: 'translate(-50%,-50%)',
-              // backgroundColor: 'red'
-            }}
+          <Loader type="TailSpin" color="#4abdac"  width={80}
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            alignContent: 'center',
+            marginTop:'35vh',
+        }}
           />
           :
           <div className={classes.paper}>
@@ -228,11 +224,14 @@ export default function SignIn() {
               {
                 err
                 &&
-                <span style={{
-                  color: 'red'
+                <p style={{
+                  color: 'red',
+                  textAlign:'center',
+                  marginTop:'5px',
+                  marginBottom:'5px',
                 }}>
                   Invalid credentials.
-            </span>
+                </p>
               }
               <Grid container>
                 <Grid item xs>

@@ -7,6 +7,7 @@ import {
   ContactUs,
   Appointment
 }
+
   from './Pages';
 import {
   Switch,
@@ -26,6 +27,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { setAuth, setUser, setCompany } from './redux/auth';
 import Loader from 'react-loader-spinner';
+
 
 
 
@@ -92,18 +94,14 @@ function App() {
       {
         loading
           ?
-          <Loader type="Rings" color="#4abdac" height={100} width={100}
-            style={{
-              // marginTop: '40vh',
-              // display: 'block',
-              // marginLeft: 'auto',
-              // marginRight: 'auto',
-              // width: '100vh',
-              // height: '100%',
-              // marginLeft: '',
-              // transform: 'translate(-50%,-50%)',
-              // backgroundColor: 'red'
-            }}
+          <Loader type="TailSpin" color="#4abdac" height={100} width={100}
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            alignContent: 'center',
+            marginTop:'35vh',
+        }}
           />
           :
           <>
@@ -126,7 +124,7 @@ function App() {
           </>
 }
 
-      
+     
     </ThemeProvider>
 
   );
