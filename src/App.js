@@ -6,7 +6,7 @@ import {
   ContactUs,
   Appointment
 }
-  from './pages';
+  from './Pages';
 import {
   Switch,
   Route
@@ -17,7 +17,7 @@ import {
 import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import {
   Navbar
-} from './comps';
+} from './Comps';
 import { useSelector } from 'react-redux';
 
 

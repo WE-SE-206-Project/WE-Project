@@ -16,9 +16,9 @@ import {
   Paper,
   Input
 } from '@material-ui/core';
-import {
-  Navbar
-} from '../comps';
+// import {
+//   Navbar
+// } from '../comps';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import validateEmail from '../features/validateEmail';
