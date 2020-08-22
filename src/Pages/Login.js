@@ -116,7 +116,7 @@ export default function SignIn() {
               dispatch(login({
                 auth: {
                   status: true,
-                  token: resp.data.token
+                  token: resp.data.accessToken
                 },
                 user: resp.data.results[0],
                 company: {}

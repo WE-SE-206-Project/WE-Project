@@ -21,7 +21,7 @@ import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/sty
 import {
   Navbar
 } from './Comps';
-
+import api from './api/api';
 // import { useSelector } from 'react-redux';
 // import { Aboutus } from './Pages/Aboutus';
 
@@ -85,6 +85,10 @@ function App() {
         }
       }
     }
+
+    // if(payload.auth.token){
+    // console.log(api.defaults.headers.common["Authorization"]);
+    // }
   }, [auth])
 
   return (
