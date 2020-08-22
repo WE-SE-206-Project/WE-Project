@@ -13,18 +13,16 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-
-
 import {
   Navbar
 } from '../Comps';
-
 import { useHistory } from 'react-router-dom';
 import validateEmail from '../features/validateEmail';
 import validatePhone from '../features/validatePhone';
 import { useSelector } from 'react-redux';
 import api from '../api/api';
 import Loader from 'react-loader-spinner';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -179,7 +177,7 @@ export default function Profile() {
           :
           <div className={classes.paper}>
             <Avatar className={classes.avatar}>
-              <AccountCircleIcon/>
+              <AccountCircleIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
               Profile
@@ -197,17 +195,46 @@ export default function Profile() {
                         id="name"
                         label="Name"
                         name="name"
-                        autoFocus
+                        // autoFocus
                         autoComplete="name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        disabled= {active}
+                        disabled={active}
                       />
                     </Grid>
                     :
                     <>
-                      
-                      
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          autoComplete="fname"
+                          name="firstName"
+                          variant="outlined"
+                          required
+                          fullWidth
+                          id="firstName"
+                          label="First Name"
+                          // autoFocus
+                          value={fName}
+                          onChange={(e) => setFName(e.target.value)}
+                          disabled={active}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          variant="outlined"
+                          required
+                          fullWidth
+                          id="lastName"
+                          label="Last Name"
+                          name="lastName"
+                          autoComplete="lname"
+                          value={lName}
+                          onChange={(e) => setLName(e.target.value)}
+                          disabled={active}
+
+                        />
+                      </Grid>
+
                     </>
 
                 }
@@ -223,7 +250,7 @@ export default function Profile() {
                     autoComplete="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    disabled= {true}
+                    disabled={true}
                   />
                 </Grid>
                 <Grid item xs={12} >
@@ -241,12 +268,12 @@ export default function Profile() {
                     inputProps={{
                       maxLength: 11
                     }
-                }
-                    disabled= {active}
+                    }
+                    disabled={active}
                   // autoFocus
                   />
                 </Grid>
-                <Grid item xs={12}>
+                {/* <Grid item xs={12}>
                   <TextField
                     variant="outlined"
                     required
@@ -258,9 +285,9 @@ export default function Profile() {
                     // autoComplete="current-password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    disabled= {active}
+                    disabled={active}
                   />
-                </Grid>
+                </Grid> */}
               </Grid>
               <Button
                 // type="submit"
@@ -268,14 +295,14 @@ export default function Profile() {
                 variant="contained"
                 color="primary"
                 className={classes.submit}
-                onClick={handleSubmit}
+                onClick={() => setActive(false)}
               >
                 Edit Profile
           </Button>
 
-        
-        
-             
+
+
+
             </form>
           </div>
       }

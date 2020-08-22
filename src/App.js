@@ -6,7 +6,8 @@ import {
   Register,
   ContactUs,
   Appointment,
-  Aboutus
+  Aboutus,
+  Profile
 }
   from './Pages';
 import {
@@ -122,6 +123,7 @@ function App() {
                 </Switch>
                 :
                 <Switch>
+                  <Route path="/"><Profile /></Route>
                   <Route path="/appointment"><Appointment /></Route>
                 </Switch>
             }

@@ -4,6 +4,7 @@ import Register from './Register';
 import ContactUs from './ContactUs';
 import Appointment from './Appointment';
 import Aboutus from './Aboutus';
+import Profile from './Profile';
 
 export {
   Landing,
@@ -11,5 +12,6 @@ export {
   Register,
   ContactUs,
   Appointment,
-  Aboutus
+  Aboutus,
+  Profile
 }
