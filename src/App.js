@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import {
   Landing,
@@ -118,12 +119,6 @@ function App() {
           </>
 
       }
-
-
-
-
-
-
     </ThemeProvider>
   );
 }
