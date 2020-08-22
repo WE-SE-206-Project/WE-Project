@@ -1,0 +1,15 @@
+#aboutus-container{
+    background: url("../Asset/abousimage.jfif");
+    background-size: cover;
+    text-align: center;
+    width: 80% ;
+    margin-left: 10%;
+    border-radius: 10px;
+    color:white;
+    font-weight: 500;
+    font-size: 20px;
+    padding:1px;
+}
+.aboutus-subpart{
+    margin: 90px;
+}

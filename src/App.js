@@ -20,6 +20,7 @@ import {
   Navbar
 } from './Comps';
 import { useSelector } from 'react-redux';
+import { Aboutus } from './Pages/Aboutus';
 
 
 const theme = createMuiTheme({
@@ -48,28 +49,28 @@ function App() {
 
   return (
      <ThemeProvider theme={theme}>
-       <CssBaseline />
-       <Navbar />
-       {
-         !auth.status
-           ?
-           <Switch>
-             <Route path="/login"><Login /></Route>
-             <Route path="/register"><Register /></Route>
-             <Route path="/contact_us"><ContactUs /></Route>
+        <CssBaseline />
+        <Navbar />
+        {
+          !auth.status
+            ?
+            <Switch>
+              <Route path="/login"><Login /></Route>
+              <Route path="/register"><Register /></Route>
+              <Route path="/contact_us"><ContactUs /></Route>
              <Route path="/"><Landing /></Route>
-           </Switch>
-           :
-           <Switch>
-             <Route path="/appointment"><Appointment /></Route>
-           </Switch>
-       }
+            </Switch>
+            :
+            <Switch>
+              <Route path="/appointment"><Appointment /></Route>
+            </Switch>
+        }
+      
 
 
 
-
-     </ThemeProvider>
-    
+    </ThemeProvider>
+  
   );
 }
 
