@@ -34,13 +34,14 @@ export default function Services() {
         <article className="services-item service-item-black">
           <div className="front-text">
             <SettingsApplicationsIcon className="fa" />
-            <h1>Web Development</h1>
+            <h1>Appointment Booking</h1>
           </div>
           <div className="back-text">
-            <h1>Web Development</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis dignissimos harum repudiandae,
-            numquam natus excepturi!</p>
-            <button type="button">Read more</button>
+            <h1>Appointment Booking</h1>
+            <p>Here we are introducing the online appointment booking system for any system. It will give you 
+              lot of easiness and comfort in you busy life routine.
+            </p>
+            
           </div>
         </article>
 
@@ -49,13 +50,12 @@ export default function Services() {
         <article className="services-item service-item-white">
           <div className="front-text">
             <CreateIcon className="fa" />
-            <h1>Design and Branding</h1>
+            <h1>Online support</h1>
           </div>
           <div className="back-text">
-            <h1>Design and Branding</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis dignissimos harum repudiandae,
-            numquam natus excepturi!</p>
-            <button type="button">Read more</button>
+            <h1>Online support</h1>
+            <p>Our team will give you online support through email in order to manage and changing your appointment. </p>
+            
           </div>
         </article>
 
@@ -64,13 +64,12 @@ export default function Services() {
         <article className="services-item service-item-black">
           <div className="front-text">
             <PieChartIcon className="fa" />
-            <h1>Analytics</h1>
+            <h1>Feature</h1>
           </div>
           <div className="back-text">
-            <h1>Analytics</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis dignissimos harum repudiandae,
-            numquam natus excepturi!</p>
-            <button type="button">Read more</button>
+            <h1>Feature</h1>
+            <p>We book appointments if any user want to book an appointment while we also book appointment 
+              through organization and organization can also control and manage appointments</p>
           </div>
         </article>
 
@@ -80,13 +79,14 @@ export default function Services() {
         <article className="services-item service-item-white">
           <div className="front-text">
             <TrendingUpIcon className="fa" />
-            <h1>Ceo and Smm</h1>
+            <h1>Availability</h1>
           </div>
           <div className="back-text">
-            <h1>Ceo and Smm</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis dignissimos harum repudiandae,
-            numquam natus excepturi!</p>
-            <button type="button">Read more</button>
+            <h1>Availability</h1>
+            <p>
+              Our system is 24x7 available for you to book appointment anytime. Furthermore you can view your
+              appointments details.
+            </p>
           </div>
         </article>
 

@@ -3,6 +3,7 @@ import {
   Paper
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import '../css/card.css';
 
 const styles = makeStyles(theme => ({
   main: {
@@ -29,10 +30,24 @@ const styles = makeStyles(theme => ({
 export default function Cards() {
   const classes = styles();
   return (
+
     <div className={classes.main}>
-      <Paper className={classes.card}>Hello</Paper>
-      <Paper className={classes.card}>Hello</Paper>
-      {/* <Paper className={classes.card}>Hello</Paper> */}
+      <Paper className={classes.card}>
+        <h3 id="card-title">Click here to login as user</h3>
+        <button class="button button1">Login</button>
+
+        <h3 id="card-title">Don't have an account? Then sign up here:</h3>
+        <button class="button button1">Register</button>
+        </Paper>
+
+      <Paper className={classes.card}>
+        <h3 id="card-title">Click here to login as user</h3>
+        <button class="button button1">Login</button>
+
+        <h3 id="card-title">Don't have an account? Then sign up here:</h3>
+        <button class="button button1">Register</button>
+      </Paper>
+     
     </div>
   )
 }
