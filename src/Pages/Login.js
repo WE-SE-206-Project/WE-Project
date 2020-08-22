@@ -92,30 +92,31 @@ export default function SignIn() {
       })
         .then(resp => {
 
-          if (resp.data && resp.data.results.length > 0 && resp.data.token) {
+          if (resp.data && resp.data.results.length > 0 && resp.data.accessToken) {
             setEmail("");
             setPassword("");
 
             if (role === 'org') {
-              login({
+              dispatch(login({
                 auth: {
                   status: true,
-                  token: resp.data.token
+                  token: resp.data.accessToken
                 },
                 user: {},
                 company: resp.data.results[0]
-              })
+              }))
             }
             else {
-              login({
+              dispatch(login({
                 auth: {
                   status: true,
                   token: resp.data.token
                 },
                 user: resp.data.results[0],
                 company: {}
-              })
+              }))
             }
+            history.push('/')
           }
           else {
             setErr(true);
