@@ -104,7 +104,13 @@ export default function SignIn() {
                 },
                 user: {},
                 company: resp.data.results[0]
-              }))
+              }));
+
+              // localStorage.setItem("auth", JSON.stringify({
+              //   status: true,
+              //   token: resp.data.accessToken
+              // }));
+              // localStorage.setItem("company", JSON.stringify(resp.data.results[0]));
             }
             else {
               dispatch(login({
@@ -114,8 +120,19 @@ export default function SignIn() {
                 },
                 user: resp.data.results[0],
                 company: {}
-              }))
+              }));
+
+
             }
+
+            localStorage.setItem("auth", JSON.stringify({
+              status: true,
+              token: resp.data.accessToken
+            }));
+            localStorage.setItem(role === 'org' ? "company" : 'user', JSON.stringify(resp.data.results[0]));
+
+            console.log(localStorage)
+
             history.push('/')
           }
           else {
