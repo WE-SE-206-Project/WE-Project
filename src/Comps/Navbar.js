@@ -89,7 +89,7 @@ export default function Navbar() {
               !auth.status
                 ?
                 <>
-                  <Button className={classes.btn} onClick={() => history.push('/contact_us')}>About Us</Button>
+                  <Button className={classes.btn} onClick={() => history.push('/about_us')}>About Us</Button>
                   <Button className={classes.btn} onClick={() => history.push('/contact_us')}>Contact Us</Button>
                 </>
                 :
