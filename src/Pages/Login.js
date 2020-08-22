@@ -90,11 +90,20 @@ export default function SignIn() {
       })
         .then(resp => {
 
-          setSuccess(true)
-          setLoading(false)
-          setEmail("");
-          setPassword("");
+          if (resp.data && resp.data.results.length > 0) {
+            setEmail("");
+            setPassword("");
+          }
+          else {
+            setErr(true);
+          }
           console.log({ resp })
+          setLoading(false)
+          // setSuccess(true)
+          // setLoading(false)
+          // setEmail("");
+          // setPassword("");
+          // console.log({ resp })
         })
         .catch(err => {
           console.error(err);

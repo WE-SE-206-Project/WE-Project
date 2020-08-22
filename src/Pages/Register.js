@@ -70,7 +70,7 @@ export default function SignUpform() {
   const [phoneError, setPhoneError] = useState(false);
   const [name, setName] = useState("");
   const [err, setErr] = useState(false);
-  const [success, setSuccess] = useState(false);
+  // const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
 
@@ -112,13 +112,27 @@ export default function SignUpform() {
         })
           .then(resp => {
 
-            setSuccess(true)
-            setLoading(false)
-            setName("");
-            setPhone("");
-            setEmail("");
-            setPassword("");
+            if (resp.data.status) {
+              // setSuccess(true)
+              setName("");
+              setPhone("");
+              setEmail("");
+              setPassword("");
+              history.push('/login');
+            }
+            else {
+              setErr(true);
+            }
             console.log({ resp })
+            setLoading(false)
+
+            // setSuccess(true)
+            // setLoading(false)
+            // setName("");
+            // setPhone("");
+            // setEmail("");
+            // setPassword("");
+            // console.log({ resp })
           })
           .catch(err => {
             console.error(err);
@@ -171,9 +185,9 @@ export default function SignUpform() {
     if (err) setTimeout(() => setErr(false), 5000);
   }, [err, setErr])
 
-  useEffect(() => {
-    if (success) setTimeout(() => setSuccess(false), 5000);
-  }, [success, setSuccess])
+  // useEffect(() => {
+  //   if (success) setTimeout(() => setSuccess(false), 5000);
+  // }, [success, setSuccess])
 
 
   return (
