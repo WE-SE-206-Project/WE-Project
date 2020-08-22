@@ -33,21 +33,26 @@ export default function Cards() {
 
     <div className={classes.main}>
       <Paper className={classes.card}>
-        <h3 id="card-title">Click here to login as user</h3>
+        <h1 id="card-title">User</h1>
+        <br />
+
         <button class="button button1">Login</button>
+        <br /><br />
 
-        <h3 id="card-title">Don't have an account? Then sign up here:</h3>
-        <button class="button button1">Register</button>
-        </Paper>
-
-      <Paper className={classes.card}>
-        <h3 id="card-title">Click here to login as user</h3>
-        <button class="button button1">Login</button>
-
-        <h3 id="card-title">Don't have an account? Then sign up here:</h3>
+        {/* <h3 id="card-title">Don't have an account? Then sign up here:</h3> */}
         <button class="button button1">Register</button>
       </Paper>
-     
+
+      <Paper className={classes.card}>
+
+        <h1 id="card-title">Organiztion</h1>
+        <br />
+        <button class="button button1">Login</button>
+        <br /><br />
+        {/* <h3 id="card-title">Don't have an account? Then sign up here:</h3> */}
+        <button class="button button1">Register</button>
+      </Paper>
+
     </div>
   )
 }
