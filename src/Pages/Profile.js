@@ -27,7 +27,7 @@ import Loader from 'react-loader-spinner';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(13),
+    marginTop: theme.spacing(15),
     marginBottom: theme.spacing(5),
     display: 'flex',
     flexDirection: 'column',
@@ -42,22 +42,24 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(3),
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
+    margin: theme.spacing(3, 0, 0),
   },
 }));
 
 export default function Profile() {
   const classes = useStyles();
   const history = useHistory();
-  const role = useSelector(state => state.unauth.role);
-  const [fName, setFName] = useState("");
-  const [lName, setLName] = useState("");
-  const [email, setEmail] = useState("");
+  const auth = useSelector(state => state.auth);
+  const [role, setRole] = useState(auth.company.id ? "org" : "user");
+  const user = role === "org" ? auth.company : auth.user;
+  const [fName, setFName] = useState(user.firstName);
+  const [lName, setLName] = useState(user.lastName);
+  const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phone, setPhone] = useState(user.phone);
   const [emailError, setEmailError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
-  const [name, setName] = useState("");
+  const [name, setName] = useState(user.name);
   const [err, setErr] = useState(false);
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -81,23 +83,14 @@ export default function Profile() {
       && !emailError
       && phone.length > 0
       && !phoneError
-      && password.length >= 4
     ) {
-      let obj = {
-        email,
-        phone,
-        password
-      };
 
       if (role === 'org' && name.length > 0) {
 
-        console.log({
-          ...obj,
-          name
-        })
         setLoading(true)
-        await api.post('/org/register', {
-          ...obj,
+        await api.post('/org/update', {
+          phone,
+          email,
           name
         })
           .then(resp => {
@@ -118,16 +111,12 @@ export default function Profile() {
 
       }
       else if (role === 'user' && fName.length > 0 && lName.length > 0) {
-        console.log({
-          ...obj,
-          fName,
-          lName
-        })
         setLoading(true)
-        await api.post('/users/register', {
-          ...obj,
+        await api.post('/users/update', {
+          email,
           firstName: fName,
-          lastName: lName
+          lastName: lName,
+          phone
         })
           .then(resp => {
 
@@ -299,6 +288,21 @@ export default function Profile() {
               >
                 Edit Profile
           </Button>
+              {
+                !active
+                &&
+                <Button
+                  // type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                // onClick={() => setActive(false)}
+                >
+                  Save Profile
+          </Button>
+              }
+
 
 
 

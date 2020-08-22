@@ -75,11 +75,11 @@ function App() {
         localCompany
       })
       if (localAuth && localAuth.status && localAuth.token) {
-        if (localUser.id) {
+        if (localUser) {
           dispatch(setAuth(localAuth));
           dispatch(setUser(localUser));
         }
-        else if (localCompany.id) {
+        else if (localCompany) {
           dispatch(setAuth(localAuth));
           dispatch(setCompany(localCompany));
         }
@@ -123,8 +123,8 @@ function App() {
                 </Switch>
                 :
                 <Switch>
-                  <Route path="/"><Profile /></Route>
                   <Route path="/appointment"><Appointment /></Route>
+                  <Route path="/"><Profile /></Route>
                 </Switch>
             }
           </>
