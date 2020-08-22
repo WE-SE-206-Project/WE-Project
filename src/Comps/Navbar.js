@@ -15,7 +15,8 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../redux/auth';
 
 
 const styles = makeStyles(theme => ({
@@ -63,6 +64,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const history = useHistory();
   const auth = useSelector(state => state.auth.auth);
+  const dispatch = useDispatch();
 
 
   const handleChange = (e) => setOpen(!open)
@@ -87,7 +89,7 @@ export default function Navbar() {
               !auth.status
                 ?
                 <>
-                  <Button className={classes.btn}>About Us</Button>
+                  <Button className={classes.btn} onClick={() => history.push('/about_us')}>About Us</Button>
                   <Button className={classes.btn} onClick={() => history.push('/contact_us')}>Contact Us</Button>
                 </>
                 :
@@ -95,6 +97,10 @@ export default function Navbar() {
                   <Button className={classes.btn}>Profile</Button>
                   <Button className={classes.btn}>Dashboard</Button>
                   <Button className={classes.btn} onClick={() => history.push('/appointment')}>Create Appointment</Button>
+                  <Button className={classes.btn} onClick={() => {
+                    dispatch(logout());
+                    history.push('/');
+                  }}>Logout</Button>
 
                   {/* <Button className={classes.btn}>About Us</Button> */}
                 </>
@@ -112,7 +118,10 @@ export default function Navbar() {
                     !auth.status
                       ?
                       <>
-                        <MenuItem onClick={handleClose}>About Us</MenuItem>
+                        <MenuItem onClick={() => {
+                          handleClose();
+                          history.push('/about_us');
+                        }}>About Us</MenuItem>
                         <MenuItem onClick={() => {
                           handleClose();
                           history.push('/contact_us');
@@ -126,6 +135,11 @@ export default function Navbar() {
                           handleClose();
                           history.push('/appointment');
                         }}>Create Appointment</MenuItem>
+                        <MenuItem onClick={() => {
+                          handleClose();
+                          dispatch(logout());
+                          history.push('/');
+                        }}>Logout</MenuItem>
                       </>
                   }
 
