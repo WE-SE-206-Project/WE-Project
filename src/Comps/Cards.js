@@ -4,6 +4,9 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import '../css/card.css';
+import { useHistory } from 'react-router-dom';
+import { setRole } from "../redux/unauth";
+import { useDispatch } from 'react-redux';
 
 const styles = makeStyles(theme => ({
   main: {
@@ -29,25 +32,45 @@ const styles = makeStyles(theme => ({
 
 export default function Cards() {
   const classes = styles();
+  const history = useHistory();
+  const dispatch = useDispatch();
+
   return (
 
     <div className={classes.main}>
       <Paper className={classes.card}>
-        <h3 id="card-title">Click here to login as user</h3>
-        <button class="button button1">Login</button>
+        <h1 id="card-title">User</h1>
+        <br />
 
-        <h3 id="card-title">Don't have an account? Then sign up here:</h3>
-        <button class="button button1">Register</button>
-        </Paper>
+        <button class="button button1" onClick={() => {
+          dispatch(setRole('user'));
+          history.push('/login');
+        }}>Login</button>
+        <br /><br />
+
+        {/* <h3 id="card-title">Don't have an account? Then sign up here:</h3> */}
+        <button class="button button1" onClick={() => {
+          dispatch(setRole('user'));
+          history.push('/register');
+        }}>Register</button>
+      </Paper>
 
       <Paper className={classes.card}>
-        <h3 id="card-title">Click here to login as user</h3>
-        <button class="button button1">Login</button>
 
-        <h3 id="card-title">Don't have an account? Then sign up here:</h3>
-        <button class="button button1">Register</button>
+        <h1 id="card-title">Organiztion</h1>
+        <br />
+        <button class="button button1" onClick={() => {
+          dispatch(setRole('org'));
+          history.push('/login');
+        }}>Login</button>
+        <br /><br />
+        {/* <h3 id="card-title">Don't have an account? Then sign up here:</h3> */}
+        <button class="button button1" onClick={() => {
+          dispatch(setRole('org'));
+          history.push('/register');
+        }}>Register</button>
       </Paper>
-     
+
     </div>
   )
 }

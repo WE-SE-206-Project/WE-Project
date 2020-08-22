@@ -24,6 +24,7 @@ const styles = makeStyles(theme => ({
   },
   heading: {
     color: '#fff',
+    cursor: 'pointer',
     [theme.breakpoints.down('xs')]: {
       fontSize: '1.4rem'
     }
@@ -77,7 +78,10 @@ export default function Navbar() {
     <>
       <AppBar position="fixed" color="primary" className={classes.appbar}>
         <Toolbar className={classes.toolbar}>
-          <Typography variant="h4" className={classes.heading}>Appointment Scheduler</Typography>
+          <Typography
+            variant="h4"
+            className={classes.heading}
+            onClick={() => history.push('/')}>Appointment Scheduler</Typography>
           <div className={classes.btngrp}>
             {
               !auth.status

@@ -15,6 +15,7 @@ import Container from '@material-ui/core/Container';
 import EventIcon from '@material-ui/icons/Event';
 import validateEmail from '../features/validateEmail';
 import validatePhone from '../features/validatePhone';
+import Loader from 'react-loader-spinner';
 
 
 // function Copyright() {
@@ -63,6 +64,9 @@ export default function Createappointment() {
   const [phone, setPhone] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
+  const [err, setErr] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setEmailError(validateEmail(email));
@@ -101,145 +105,180 @@ export default function Createappointment() {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <EventIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Create Appointment
+      {
+        loading
+          ?
+          <Loader type="Rings" color="#4abdac" height={100} width={80}
+            style={{
+              marginTop: '40vh',
+              display: 'block',
+              // marginLeft: 'auto',
+              // marginRight: 'auto',
+              // width: '100vh',
+              // height: '100%',
+              // marginLeft: '',
+              // transform: 'translate(-50%,-50%)',
+              // backgroundColor: 'red'
+            }}
+          />
+          :
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <EventIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Create Appointment
         </Typography>
-        <form className={classes.form} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-                value={fName}
-                onChange={(e) => setFName(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-                value={lName}
-                onChange={(e) => setLName(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="address"
-                label="Address"
-                name="address"
-                autoComplete="address"
-                multiline={true}
-                rows={3}
-                maxrows={2}
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12} >
-              <TextField
-                autoComplete="pnumber"
-                name="Phone Number"
-                variant="outlined"
-                required
-                fullWidth
-                id="pnumber"
-                label="Phone Number"
-                placeholder="03xx-xxxxxxx"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                inputProps={{
-                  maxLength: 11
-                }}
-              // autoFocus
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="reason"
-                label="Reason"
-                type="text"
-                id="reason"
-                multiline={true}
-                rows={3}
-                maxrows={2}
-                value={reason}
-                onChange={(e) => setReason(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="date"
-                label="Scheduled At (Kindly select time in half hour format)"
-                type="datetime-local"
-                id="date"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                inputProps={{
-                  step: 1800 // 5 min
-                }}
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
+            <form className={classes.form} noValidate>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    autoComplete="fname"
+                    name="firstName"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="firstName"
+                    label="First Name"
+                    autoFocus
+                    value={fName}
+                    onChange={(e) => setFName(e.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="lastName"
+                    label="Last Name"
+                    name="lastName"
+                    autoComplete="lname"
+                    value={lName}
+                    onChange={(e) => setLName(e.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                    autoComplete="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="address"
+                    label="Address"
+                    name="address"
+                    autoComplete="address"
+                    multiline={true}
+                    rows={3}
+                    maxrows={2}
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={12} >
+                  <TextField
+                    autoComplete="pnumber"
+                    name="Phone Number"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="pnumber"
+                    label="Phone Number"
+                    placeholder="03xx-xxxxxxx"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    inputProps={{
+                      maxLength: 11
+                    }}
+                  // autoFocus
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    name="reason"
+                    label="Reason"
+                    type="text"
+                    id="reason"
+                    multiline={true}
+                    rows={3}
+                    maxrows={2}
+                    value={reason}
+                    onChange={(e) => setReason(e.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    name="date"
+                    label="Scheduled At (Kindly select time in half hour format)"
+                    type="datetime-local"
+                    id="date"
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    inputProps={{
+                      step: 1800 // 5 min
+                    }}
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
 
-              />
-            </Grid>
-          </Grid>
-          <Button
-            // type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            onClick={handleSubmit}
+                  />
+                </Grid>
+              </Grid>
+              <Button
+                // type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                onClick={handleSubmit}
 
-          >
-            Create Appointment
+              >
+                Create Appointment
           </Button>
+              {
+                err
+                &&
+                <span style={{
+                  color: 'red'
+                }}>
+                  Sorry, Error occurred please try again.
+            </span>
+              }
+              <br />
+              {
+                success
+                &&
+                <span style={{
+                  color: 'green',
+                  // marginLeft: '10%',
+                  // marginRight: 'auto'
+                }}>
+                  Sucessfully created your account.
+            </span>
+              }
 
 
-
-        </form>
-      </div>
-      {/* <Box mt={5}>
-        <Copyright />
-      </Box> */}
+            </form>
+          </div>
+      }
     </Container>
   );
 }

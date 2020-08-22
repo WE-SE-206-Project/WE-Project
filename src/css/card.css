@@ -1,6 +1,7 @@
 #card-title{
-    margin-left: 4%;
-    font-size: medium;
+    /* margin-left: 4%; */
+    text-align: center;
+    /* font-size: medium; */
 }
 .button {
     background-color: #4CAF50; /* Green */
@@ -14,7 +15,10 @@
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
-    margin-left: 5%;
+    width: 120px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    /* margin-right: auto; */
   }
   
   .button1 {
