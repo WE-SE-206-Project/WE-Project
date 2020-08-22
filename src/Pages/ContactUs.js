@@ -63,13 +63,21 @@ export default function SignUpform() {
   const [emailError, setEmailError] = useState(false);
   const [message, setMessage] = useState("");
   const [err, setErr] = useState(false);
-  // const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setEmailError(validateEmail(email));
     // console.log(validateEmail(email))
   }, [email, setEmail])
+
+  useEffect(() => {
+    if (err) setTimeout(() => setErr(false), 5000);
+  }, [err, setErr])
+
+  useEffect(() => {
+    if (success) setTimeout(() => setSuccess(false), 5000);
+  }, [success, setSuccess])
 
   const handleSubmit = async () => {
     if (email.length > 0 && !emailError && fName.length > 0 && lName.length > 0 && message.length > 0) {
@@ -88,41 +96,19 @@ export default function SignUpform() {
       })
         .then(resp => {
 
-          // if (resp.data && resp.data.results.length > 0 && resp.data.token) {
-          //   setEmail("");
-          //   setPassword("");
-
-          //   if (role === 'org') {
-          //     login({
-          //       auth: {
-          //         status: true,
-          //         token: resp.data.token
-          //       },
-          //       user: {},
-          //       company: resp.data.results[0]
-          //     })
-          //   }
-          //   else {
-          //     login({
-          //       auth: {
-          //         status: true,
-          //         token: resp.data.token
-          //       },
-          //       user: resp.data.results[0],
-          //       company: {}
-          //     })
-          //   }
-          // }
-          // else {
-          //   setErr(true);
-          // }
+          if (resp.data) {
+            setFName("");
+            setLName("");
+            setEmail("");
+            setMessage("");
+            setSuccess(true);
+          }
+          else {
+            setErr(true);
+          }
           console.log({ resp })
           setLoading(false)
-          // setSuccess(true)
-          // setLoading(false)
-          // setEmail("");
-          // setPassword("");
-          // console.log({ resp })
+
         })
         .catch(err => {
           console.error(err);
@@ -130,16 +116,11 @@ export default function SignUpform() {
           setLoading(false)
         })
     }
-    // else {
-    //   console.log('FUCK')
-    // }
-    // console.log(email.length > 0, !emailError, fName.length > 0, lName.length > 0, message.length > 0)
   }
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      {/* <Navbar /> */}
       {
         loading
           ?
@@ -241,6 +222,17 @@ export default function SignUpform() {
                   color: 'red'
                 }}>
                   Sorry, Error occurred please try again.
+            </span>
+              }
+              {
+                success
+                &&
+                <span style={{
+                  color: 'green',
+                  // marginLeft: '10%',
+                  // marginRight: 'auto'
+                }}>
+                  We have sucessfully recieved your email.
             </span>
               }
               {/* <Grid container justify="flex-end">
