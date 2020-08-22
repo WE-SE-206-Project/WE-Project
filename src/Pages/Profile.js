@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Profile() {
+export default function Profile({ loading, setLoading }) {
   const classes = useStyles();
   const history = useHistory();
   const auth = useSelector(state => state.auth);
@@ -62,7 +62,7 @@ export default function Profile() {
   const [name, setName] = useState(user.name);
   const [err, setErr] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [active, setActive] = useState(true);
 
 
@@ -95,12 +95,14 @@ export default function Profile() {
         })
           .then(resp => {
 
-            setSuccess(true)
+            // setSuccess(true)
             setLoading(false)
-            setName("");
-            setPhone("");
-            setEmail("");
-            setPassword("");
+            // setName("");
+            // setPhone("");
+            // setEmail("");
+            // setPassword("");
+            setActive(true)
+
             console.log({ resp })
           })
           .catch(err => {
@@ -120,13 +122,14 @@ export default function Profile() {
         })
           .then(resp => {
 
-            setSuccess(true)
-            setLoading(false)
-            setFName("");
-            setLName("");
-            setPhone("");
-            setEmail("");
-            setPassword("");
+            // setSuccess(true)
+            setLoading(false);
+            setActive(true)
+            // setFName("");
+            // setLName("");
+            // setPhone("");
+            // setEmail("");
+            // setPassword("");
             console.log({ resp })
           })
           .catch(err => {
@@ -158,13 +161,13 @@ export default function Profile() {
         loading
           ?
           <Loader type="TailSpin" color="#4abdac" height={100} width={80}
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            alignContent: 'center',
-            marginTop:'35vh',
-        }}
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              alignContent: 'center',
+              marginTop: '35vh',
+            }}
           />
           :
           <div className={classes.paper}>
@@ -300,10 +303,26 @@ export default function Profile() {
                   variant="contained"
                   color="primary"
                   className={classes.submit}
-                // onClick={() => setActive(false)}
+                  onClick={handleSubmit}
                 >
                   Save Profile
           </Button>
+              }
+              {
+                err
+                &&
+                <>
+                  <br />
+                  <p style={{
+                    color: 'red',
+                    textAlign: 'center',
+                    marginTop: '5px',
+                    marginBottom: '5px',
+                  }}>
+                    Sorry, Error occurred please try again.
+                </p>
+                </>
+
               }
 
 

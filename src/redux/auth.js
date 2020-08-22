@@ -17,9 +17,8 @@ const slice = createSlice({
       state.auth = payload.auth;
       state.user = payload.user;
       state.company = payload.company;
-      // console.log({ payload })
       if (payload.auth.token) {
-        api.defaults.headers.common["Authorization"] = payload.auth.token;
+        api.defaults.headers.common["Authorization"] = `Bearer ${payload.auth.token}`;
       }
     },
     logout: (state) => {
@@ -35,7 +34,9 @@ const slice = createSlice({
       state.auth = payload;
 
       if (payload.token) {
-        api.defaults.headers.common["Authorization"] = payload.token;
+        api.defaults.headers.common["Authorization"] = `Bearer ${payload.token}`;
+        // console.log({ api })
+        // api.headers["Authorization"] = payload.token;
       }
       localStorage.setItem("auth", JSON.stringify(payload))
     },

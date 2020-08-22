@@ -25,7 +25,8 @@ import api from './api/api';
 // import { Aboutus } from './Pages/Aboutus';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { setAuth, setUser, setCompany } from './redux/auth';
+import { setAuth, setUser, setCompany, logout } from './redux/auth';
+import { setAppointments, setCompanies } from './redux/dashboard';
 import Loader from 'react-loader-spinner';
 
 
@@ -56,7 +57,65 @@ function App() {
   const auth = useSelector(state => state.auth.auth);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
+  const [loading1, setLoading1] = useState(false);
+  // const [err1, setErr1] = useState(false);
 
+  const getAppointments = async (role, id, email, token) => {
+    setLoading1(true);
+    // console.log(api.defaults.headers.common["Authorization"]);
+    // console.log({
+    //   role,
+    //   orgId: id,
+    //   email
+    // })
+    await api.post('/api/getAppointment', {
+      // headers: {
+      //   Authorization: token
+      // },
+      // body: {
+      role: 'user',
+      orgId: 0,
+      email: 'rmibrahim00@gmail.com'
+      // }
+    })
+      .then(resp => {
+        if (resp.data) {
+          // console.log("WORKING")
+          dispatch(setAppointments(resp.data))
+        }
+
+        setLoading1(false)
+      })
+      .catch(err => {
+        setLoading1(false);
+        dispatch(logout())
+        // setErr1(true);
+      })
+  }
+
+  const getCompanies = async () => {
+    setLoading1(true);
+    // console.log(api.defaults.headers.common["Authorization"]);
+    // console.log({
+    //   role,
+    //   orgId: id,
+    //   email
+    // })
+    await api.get('/org/')
+      .then(resp => {
+        if (resp.data) {
+          // console.log("WORKING")
+          dispatch(setCompanies(resp.data))
+        }
+        // console.log({ resp })
+        setLoading1(false)
+      })
+      .catch(err => {
+        setLoading1(false);
+        dispatch(logout())
+        // setErr1(true);
+      })
+  }
 
   useEffect(() => {
 
@@ -64,25 +123,43 @@ function App() {
       setLoading(false)
     }, 3000)
 
-
+    const localAuth = JSON.parse(localStorage.getItem("auth"));
+    const localUser = JSON.parse(localStorage.getItem("user"));
+    const localCompany = JSON.parse(localStorage.getItem("company"));
     if (!auth.status) {
-      const localAuth = JSON.parse(localStorage.getItem("auth"));
-      const localUser = JSON.parse(localStorage.getItem("user"));
-      const localCompany = JSON.parse(localStorage.getItem("company"));
       console.log({
         localAuth,
         localUser,
         localCompany
       })
       if (localAuth && localAuth.status && localAuth.token) {
+        // api.defaults.headers.common["Authorization"] = localAuth.token;
+        // console.log(api.defaults.headers.common["Authorization"]);
+
         if (localUser) {
           dispatch(setAuth(localAuth));
           dispatch(setUser(localUser));
+
+          getAppointments('user', 0, localUser.email, localAuth.token);
+          getCompanies();
         }
         else if (localCompany) {
           dispatch(setAuth(localAuth));
           dispatch(setCompany(localCompany));
+
+          getAppointments('org', localCompany.id, "", localAuth.token);
+
         }
+      }
+    }
+    else if (auth.status) {
+      if (localUser) {
+        getAppointments('user', 0, localUser.email, localAuth.token);
+        getCompanies();
+      }
+      else if (localCompany) {
+        getAppointments('org', localCompany.id, "", localAuth.token);
+
       }
     }
 
@@ -124,7 +201,13 @@ function App() {
                 :
                 <Switch>
                   <Route path="/appointment"><Appointment /></Route>
-                  <Route path="/"><Profile /></Route>
+                  <Route path="/"><Profile
+                    setLoading={setLoading1}
+                    // getCompanies={getCompanies}
+                    // getAppointments={getAppointments}
+                    // err={err1}
+                    // setErr={setErr1}
+                    loading={loading1} /></Route>
                 </Switch>
             }
           </>
