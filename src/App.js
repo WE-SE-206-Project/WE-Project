@@ -6,7 +6,7 @@ import {
   Register,
   ContactUs,
   Appointment,
-  AboutUs
+  Aboutus
 }
   from './Pages';
 import {
@@ -117,7 +117,7 @@ function App() {
                   <Route path="/login"><Login /></Route>
                   <Route path="/register"><Register /></Route>
                   <Route path="/contact_us"><ContactUs /></Route>
-                  <Route path="/about_us"><AboutUs /></Route>
+                  <Route path="/about_us"><Aboutus /></Route>
                   <Route path="/"><Landing /></Route>
                 </Switch>
                 :

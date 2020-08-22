@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/aboutus.css';
-export default class AboutUs extends React.Component {
+export default class Aboutus extends React.Component {
   render() {
     return (
       <div id="aboutus-container">

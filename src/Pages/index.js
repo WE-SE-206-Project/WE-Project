@@ -3,7 +3,7 @@ import Login from './Login';
 import Register from './Register';
 import ContactUs from './ContactUs';
 import Appointment from './Appointment';
-import AboutUs from './AboutUs';
+import Aboutus from './Aboutus';
 
 export {
   Landing,
@@ -11,5 +11,5 @@ export {
   Register,
   ContactUs,
   Appointment,
-  AboutUs
+  Aboutus
 }
