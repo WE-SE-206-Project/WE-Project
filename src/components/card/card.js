@@ -4,7 +4,9 @@ class Card extends React.Component {
     render() {
         return (
             <div id="card">
-                <p> data daalo mujh men</p>
+                <h3>
+                    Hi, as organization please login here
+                </h3>
 
             </div>
         )
