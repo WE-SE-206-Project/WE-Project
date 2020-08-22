@@ -16,9 +16,15 @@ import {
   Paper,
   Input
 } from '@material-ui/core';
+<<<<<<< HEAD
 // import {
 //   Navbar
 // } from '../comps';
+=======
+import {
+  Navbar
+} from '../Comps';
+>>>>>>> b8f050f3fd07b58cc021e5821d2ceb746bee682b
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import validateEmail from '../features/validateEmail';

@@ -13,6 +13,12 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
+<<<<<<< HEAD
+=======
+import {
+  Navbar
+} from '../Comps';
+>>>>>>> b8f050f3fd07b58cc021e5821d2ceb746bee682b
 import validateEmail from '../features/validateEmail';
 
 
