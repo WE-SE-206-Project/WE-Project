@@ -20,10 +20,11 @@ import {
   Navbar
 } from '../Comps';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import validateEmail from '../features/validateEmail';
 import api from '../api/api';
 import Loader from 'react-loader-spinner';
+import { login } from '../redux/auth';
 
 // function Copyright() {
 //   return (
@@ -69,6 +70,7 @@ export default function SignIn() {
   const [err, setErr] = useState(false);
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
   // const [emailError, setEmailError] = useState(false);
 
 
@@ -90,9 +92,30 @@ export default function SignIn() {
       })
         .then(resp => {
 
-          if (resp.data && resp.data.results.length > 0) {
+          if (resp.data && resp.data.results.length > 0 && resp.data.token) {
             setEmail("");
             setPassword("");
+
+            if (role === 'org') {
+              login({
+                auth: {
+                  status: true,
+                  token: resp.data.token
+                },
+                user: {},
+                company: resp.data.results[0]
+              })
+            }
+            else {
+              login({
+                auth: {
+                  status: true,
+                  token: resp.data.token
+                },
+                user: resp.data.results[0],
+                company: {}
+              })
+            }
           }
           else {
             setErr(true);
