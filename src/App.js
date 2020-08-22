@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import {
   Landing,
   Login,
@@ -46,29 +47,29 @@ function App() {
   const auth = useSelector(state => state.auth.auth);
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Navbar />
-
-      {
-        !auth.status
-          ?
-          <Switch>
-            <Route path="/login"><Login /></Route>
-            <Route path="/register"><Register /></Route>
-            <Route path="/contact_us"><ContactUs /></Route>
-            <Route path="/"><Landing /></Route>
-          </Switch>
-          :
-          <Switch>
-            <Route path="/appointment"><Appointment /></Route>
-          </Switch>
-      }
-
+     <ThemeProvider theme={theme}>
+       <CssBaseline />
+       <Navbar />
+       {
+         !auth.status
+           ?
+           <Switch>
+             <Route path="/login"><Login /></Route>
+             <Route path="/register"><Register /></Route>
+             <Route path="/contact_us"><ContactUs /></Route>
+             <Route path="/"><Landing /></Route>
+           </Switch>
+           :
+           <Switch>
+             <Route path="/appointment"><Appointment /></Route>
+           </Switch>
+       }
 
 
 
-    </ThemeProvider>
+
+     </ThemeProvider>
+    
   );
 }
 
