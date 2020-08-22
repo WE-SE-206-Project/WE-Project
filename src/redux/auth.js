@@ -40,15 +40,15 @@ const slice = createSlice({
       if (payload.token) {
         api.defaults.headers.common["Authorization"] = payload.token;
       }
-      // localStorage.setItem("auth", JSON.stringify(payload))
+      localStorage.setItem("auth", JSON.stringify(payload))
     },
     setUser: (state, { payload }) => {
       state.user = payload;
-      // localStorage.setItem("user", JSON.stringify(payload))
+      localStorage.setItem("user", JSON.stringify(payload))
     },
     setCompany: (state, { payload }) => {
       state.company = payload;
-      // localStorage.setItem("company", JSON.stringify(payload))
+      localStorage.setItem("company", JSON.stringify(payload))
     }
   }
 })
