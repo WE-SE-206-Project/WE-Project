@@ -234,13 +234,13 @@ export default function SignIn() {
                 </p>
               }
               <Grid container>
-                <Grid item xs>
+                {/* <Grid item xs>
                   <Link variant="body2" style={{
                     cursor: 'pointer'
                   }}>
                     Forgot password?
               </Link>
-                </Grid>
+                </Grid> */}
                 <Grid item>
                   <Link variant="body2" style={{
                     cursor: 'pointer'

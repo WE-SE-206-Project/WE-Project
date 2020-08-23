@@ -9,7 +9,8 @@ import {
   Aboutus,
   Profile,
   Termsandconditions,
-  PrivacyPolicy
+  PrivacyPolicy,
+  Dashboard
 } from './Pages';
 import {
   Switch,
@@ -199,12 +200,9 @@ function App() {
                 :
                 <Switch>
                   <Route path="/appointment"><Appointment /></Route>
+                  <Route path="/dashboard"><Dashboard /></Route>
                   <Route path="/"><Profile
                     setLoading={setLoading1}
-                    // getCompanies={getCompanies}
-                    // getAppointments={getAppointments}
-                    // err={err1}
-                    // setErr={setErr1}
                     loading={loading1} /></Route>
                 </Switch>
             }

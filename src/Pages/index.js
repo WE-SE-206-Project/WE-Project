@@ -7,6 +7,7 @@ import Aboutus from './Aboutus';
 import Profile from './Profile';
 import Termsandconditions from './Termsandconditions';
 import PrivacyPolicy from './PrivacyPolicy';
+import Dashboard from './Dashboard';
 
 export {
   Landing,
@@ -17,5 +18,6 @@ export {
   Aboutus,
   Profile,
   Termsandconditions,
-  PrivacyPolicy
+  PrivacyPolicy,
+  Dashboard
 }
