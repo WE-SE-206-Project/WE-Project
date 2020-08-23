@@ -31,3 +31,8 @@
     background-color: #4abdac;
     color: white;
   }
+  /* @media screen and (max-width: 520px) {
+    #team{
+        display: flex;
+        flex-direction: ;
+} */

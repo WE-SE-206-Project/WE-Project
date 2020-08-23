@@ -28,10 +28,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setAuth, setUser, setCompany } from './redux/auth';
 import Loader from 'react-loader-spinner';
 
-
-
-
-
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -48,9 +44,6 @@ const theme = createMuiTheme({
     }
   }
 })
-
-
-
 function App() {
 
   // const [isAuth, setIsAuth] = useState(false);

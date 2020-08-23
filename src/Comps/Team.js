@@ -25,10 +25,44 @@ export default function Team() {
                 </p>
         </div>
         <div id="team" className="mt5">
-          <TeamCard name="Rana Muhammad Ibrahim" designation="Mern stack developer" pic="ibrahim" />
-            <TeamCard name="Hamza Shahab" designation="Mern stack developer" pic="hamza" />
-            <TeamCard name="Zoha Akram" designation="Mern stack developer" pic="ibrahim" />
-            <TeamCard name="Muhammad Mubeen Rasheed" designation="Mern stack developer" pic="mubeen" />
+
+          <TeamCard 
+          name="Rana Muhammad Ibrahim"
+           designation="Mern stack developer" 
+           pic="ibrahim" 
+           fb="https://facebook.com/rmibrahim"
+           github="https://github.com/rmi-01"
+           insta="https://www.instagram.com/ibrahimm1.0"
+           linkdin="https://www.linkedin.com/in/rana-muhammad-ibrahim/"
+            />
+
+            <TeamCard 
+            name="Hamza Shahab" 
+            designation="Mern stack developer" 
+            pic="hamza" 
+            fb="https://www.facebook.com/hamzashahab1610"
+            github="https://github.com/hamzashahab1610"
+            insta="https://www.instagram.com/hamzashahab1610"
+            linkdin="https://www.linkedin.com/in/hamzashahab1610"
+            />
+
+            <TeamCard 
+            name="Zoha Akram"
+             designation="Mern stack developer"
+             pic="ibrahim" 
+             fb="https://www.facebook.com/zoha.akram.10"
+             github="https://github.com/ZohaAkram"
+             insta="https://www.instagram.com/zohaakram_/"
+             linkdin="https://www.linkedin.com/in/zoha-akram-365202197/"/>
+
+            <TeamCard 
+            name="Muhammad Mubeen Rasheed" 
+            designation="Mern stack developer" 
+            pic="mubeen" 
+            fb="https://www.facebook.com/mubeenrasheed001"
+            github="https://github.com/mubeeennn"
+            insta="https://www.instagram.com/sk.fisker/"
+            linkdin="https://us04web.zoom.us/j/71084508100?pwd=WWgyVHd2a2c4TmprcVQ5MWZxd2JQdz09"/>
             </div>
         <Paper id="team-lower" className={classes.teamCard}>
           <h1>We made website building easier for you.</h1>

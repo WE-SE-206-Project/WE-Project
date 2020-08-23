@@ -21,7 +21,7 @@ const styles = makeStyles(theme => ({
 export default function Services() {
   const classes = styles();
   return (
-    <div style={{ marginTop: '-101px', paddingTop: '130px' }} id='services'>
+    <div id='services'>
       {/* <section id="services"> */}
       {/* <div id="title"> */}
       {/* <div class="title-text"> */}

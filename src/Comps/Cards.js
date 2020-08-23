@@ -14,20 +14,36 @@ const styles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: '-199px',
     // margin: theme.spacing(3)
+    // [theme.breakpoints.down('sm')]: {
+    //   marginTop: '0px',
+    //   width: '250px'
+    // }
   },
   card: {
     padding: theme.spacing(4),
-    width: '28%',
+    width: '300px',
     // margin: theme.spacing(3),
-    marginRight: theme.spacing(3),
-    marginTop: '-199px',
-    height: 300,
+    marginRight: theme.spacing(2),
+    marginLeft: theme.spacing(2),
+    marginBottom: '20px',
+    // marginTop: '-199px',
+    height: '300px',
     transition: 'all 0.3s ease-out',
     '&:hover': {
       transform: 'translateY(-10px)'
+    },
+    [theme.breakpoints.down('sm')]: {
+      // marginTop: '0px',
+      width: '250px'
     }
+
+    
   }
+  
 }))
 
 export default function Cards() {
@@ -37,8 +53,8 @@ export default function Cards() {
 
   return (
 
-    <div className={classes.main}>
-      <Paper className={classes.card}>
+    <div className={classes.main} id="logincards">
+      <Paper className={classes.card} >
         <h1 id="card-title">User</h1>
         <br />
 
