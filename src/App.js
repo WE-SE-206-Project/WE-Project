@@ -73,9 +73,9 @@ function App() {
       //   Authorization: token
       // },
       // body: {
-      role: 'user',
-      orgId: 0,
-      email: 'rmibrahim00@gmail.com'
+      role,
+      orgId: id,
+      email
       // }
     })
       .then(resp => {
