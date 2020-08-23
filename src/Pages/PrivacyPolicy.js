@@ -1,8 +1,8 @@
 // @flow
-import  React from 'react';
+import React from 'react';
 import '../css/aboutus.css';
 
-export class PrivacyPolicy extends React.Component{
+export default class PrivacyPolicy extends React.Component {
   render() {
     return (
       <div className="termsandconditions">

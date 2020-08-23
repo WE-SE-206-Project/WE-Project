@@ -89,12 +89,13 @@ export default function Navbar() {
               !auth.status
                 ?
                 <>
+                  <Button className={classes.btn} onClick={() => history.push('/')}>Home</Button>
                   <Button className={classes.btn} onClick={() => history.push('/about_us')}>About Us</Button>
                   <Button className={classes.btn} onClick={() => history.push('/contact_us')}>Contact Us</Button>
                 </>
                 :
                 <>
-                  <Button className={classes.btn}>Profile</Button>
+                  <Button className={classes.btn} onClick={() => history.push('/')}>Profile</Button>
                   <Button className={classes.btn}>Dashboard</Button>
                   <Button className={classes.btn} onClick={() => history.push('/appointment')}>Create Appointment</Button>
                   <Button className={classes.btn} onClick={() => {
@@ -120,6 +121,10 @@ export default function Navbar() {
                       <>
                         <MenuItem onClick={() => {
                           handleClose();
+                          history.push('/');
+                        }}>Home</MenuItem>
+                        <MenuItem onClick={() => {
+                          handleClose();
                           history.push('/about_us');
                         }}>About Us</MenuItem>
                         <MenuItem onClick={() => {
@@ -129,7 +134,10 @@ export default function Navbar() {
                       </>
                       :
                       <>
-                        <MenuItem>Profile</MenuItem>
+                        <MenuItem onClick={() => {
+                          handleClose();
+                          history.push('/');
+                        }}>Profile</MenuItem>
                         <MenuItem>Dashboard</MenuItem>
                         <MenuItem onClick={() => {
                           handleClose();

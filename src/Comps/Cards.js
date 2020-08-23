@@ -15,8 +15,12 @@ const styles = makeStyles(theme => ({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
+
     flexWrap: 'wrap',
     marginTop: '-199px',
+
+    // flexWrap: 'wrap'
+
     // margin: theme.spacing(3)
     // [theme.breakpoints.down('sm')]: {
     //   marginTop: '0px',
@@ -29,9 +33,14 @@ const styles = makeStyles(theme => ({
     // margin: theme.spacing(3),
     marginRight: theme.spacing(2),
     marginLeft: theme.spacing(2),
+
     marginBottom: '20px',
     // marginTop: '-199px',
     height: '300px',
+
+    // marginTop: '-199px',
+    // height: 300,
+
     transition: 'all 0.3s ease-out',
     '&:hover': {
       transform: 'translateY(-10px)'

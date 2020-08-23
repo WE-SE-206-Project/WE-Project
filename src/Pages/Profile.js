@@ -13,23 +13,21 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-
-
 import {
   Navbar
 } from '../Comps';
-
 import { useHistory } from 'react-router-dom';
 import validateEmail from '../features/validateEmail';
 import validatePhone from '../features/validatePhone';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import api from '../api/api';
 import Loader from 'react-loader-spinner';
+import { setUser, setCompany } from '../redux/auth';
 
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(13),
+    marginTop: theme.spacing(15),
     marginBottom: theme.spacing(5),
     display: 'flex',
     flexDirection: 'column',
@@ -44,27 +42,29 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(3),
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
+    margin: theme.spacing(3, 0, 0),
   },
 }));
 
-export default function Profile() {
+export default function Profile({ loading, setLoading }) {
   const classes = useStyles();
   const history = useHistory();
-  const role = useSelector(state => state.unauth.role);
-  const [fName, setFName] = useState("");
-  const [lName, setLName] = useState("");
-  const [email, setEmail] = useState("");
+  const auth = useSelector(state => state.auth);
+  const [role, setRole] = useState(auth.company.id ? "org" : "user");
+  const user = role === "org" ? auth.company : auth.user;
+  const [fName, setFName] = useState(user.firstName);
+  const [lName, setLName] = useState(user.lastName);
+  const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phone, setPhone] = useState(user.phone);
   const [emailError, setEmailError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
-  const [name, setName] = useState("");
+  const [name, setName] = useState(user.name);
   const [err, setErr] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [active, setActive] = useState(true);
-
+  const dispatch = useDispatch();
 
 
   useEffect(() => {
@@ -83,34 +83,29 @@ export default function Profile() {
       && !emailError
       && phone.length > 0
       && !phoneError
-      && password.length >= 4
     ) {
-      let obj = {
-        email,
-        phone,
-        password
-      };
 
       if (role === 'org' && name.length > 0) {
 
-        console.log({
-          ...obj,
-          name
-        })
         setLoading(true)
-        await api.post('/org/register', {
-          ...obj,
+        await api.post('/org/update', {
+          phone,
+          email,
           name
         })
           .then(resp => {
-
-            setSuccess(true)
-            setLoading(false)
-            setName("");
-            setPhone("");
-            setEmail("");
-            setPassword("");
-            console.log({ resp })
+            if (resp.data.org) {
+              setActive(true);
+              dispatch(setCompany({
+                ...user,
+                ...resp.data.org
+              }))
+            }
+            else {
+              setErr(true);
+            }
+            setLoading(false);
+            // console.log({ resp })
           })
           .catch(err => {
             console.error(err);
@@ -120,27 +115,26 @@ export default function Profile() {
 
       }
       else if (role === 'user' && fName.length > 0 && lName.length > 0) {
-        console.log({
-          ...obj,
-          fName,
-          lName
-        })
         setLoading(true)
-        await api.post('/users/register', {
-          ...obj,
+        await api.post('/users/update', {
+          email,
           firstName: fName,
-          lastName: lName
+          lastName: lName,
+          phone
         })
           .then(resp => {
-
-            setSuccess(true)
-            setLoading(false)
-            setFName("");
-            setLName("");
-            setPhone("");
-            setEmail("");
-            setPassword("");
-            console.log({ resp })
+            if (resp.data.user) {
+              setActive(true);
+              dispatch(setUser({
+                ...user,
+                ...resp.data.user
+              }))
+            }
+            else {
+              setErr(true);
+            }
+            setLoading(false);
+            // console.log({ resp })
           })
           .catch(err => {
             console.error(err);
@@ -171,18 +165,18 @@ export default function Profile() {
         loading
           ?
           <Loader type="TailSpin" color="#4abdac" height={100} width={80}
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            alignContent: 'center',
-            marginTop:'35vh',
-        }}
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              alignContent: 'center',
+              marginTop: '35vh',
+            }}
           />
           :
           <div className={classes.paper}>
             <Avatar className={classes.avatar}>
-              <AccountCircleIcon/>
+              <AccountCircleIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
               Profile
@@ -200,17 +194,46 @@ export default function Profile() {
                         id="name"
                         label="Name"
                         name="name"
-                        autoFocus
+                        // autoFocus
                         autoComplete="name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        disabled= {active}
+                        disabled={active}
                       />
                     </Grid>
                     :
                     <>
-                      
-                      
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          autoComplete="fname"
+                          name="firstName"
+                          variant="outlined"
+                          required
+                          fullWidth
+                          id="firstName"
+                          label="First Name"
+                          // autoFocus
+                          value={fName}
+                          onChange={(e) => setFName(e.target.value)}
+                          disabled={active}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          variant="outlined"
+                          required
+                          fullWidth
+                          id="lastName"
+                          label="Last Name"
+                          name="lastName"
+                          autoComplete="lname"
+                          value={lName}
+                          onChange={(e) => setLName(e.target.value)}
+                          disabled={active}
+
+                        />
+                      </Grid>
+
                     </>
 
                 }
@@ -226,7 +249,7 @@ export default function Profile() {
                     autoComplete="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    disabled= {true}
+                    disabled={true}
                   />
                 </Grid>
                 <Grid item xs={12} >
@@ -244,12 +267,12 @@ export default function Profile() {
                     inputProps={{
                       maxLength: 11
                     }
-                }
-                    disabled= {active}
+                    }
+                    disabled={active}
                   // autoFocus
                   />
                 </Grid>
-                <Grid item xs={12}>
+                {/* <Grid item xs={12}>
                   <TextField
                     variant="outlined"
                     required
@@ -261,9 +284,9 @@ export default function Profile() {
                     // autoComplete="current-password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    disabled= {active}
+                    disabled={active}
                   />
-                </Grid>
+                </Grid> */}
               </Grid>
               <Button
                 // type="submit"
@@ -271,14 +294,45 @@ export default function Profile() {
                 variant="contained"
                 color="primary"
                 className={classes.submit}
-                onClick={handleSubmit}
+                onClick={() => setActive(false)}
               >
                 Edit Profile
           </Button>
+              {
+                !active
+                &&
+                <Button
+                  // type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  onClick={handleSubmit}
+                >
+                  Save Profile
+          </Button>
+              }
+              {
+                err
+                &&
+                <>
+                  <br />
+                  <p style={{
+                    color: 'red',
+                    textAlign: 'center',
+                    marginTop: '5px',
+                    marginBottom: '5px',
+                  }}>
+                    Sorry, Error occurred please try again.
+                </p>
+                </>
 
-        
-        
-             
+              }
+
+
+
+
+
             </form>
           </div>
       }

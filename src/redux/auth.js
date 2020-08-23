@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import api from '../api/api';
 
 
 const slice = createSlice({
@@ -16,26 +17,36 @@ const slice = createSlice({
       state.auth = payload.auth;
       state.user = payload.user;
       state.company = payload.company;
+      if (payload.auth.token) {
+        api.defaults.headers.common["Authorization"] = `Bearer ${payload.auth.token}`;
+      }
     },
     logout: (state) => {
       localStorage.removeItem("user");
       localStorage.removeItem("auth");
       localStorage.removeItem("company");
+      delete api.defaults.headers.common["Authorization"]
       state.auth = { status: false, token: null };
       state.user = {};
       state.company = {};
     },
     setAuth: (state, { payload }) => {
       state.auth = payload;
-      // localStorage.setItem("auth", JSON.stringify(payload))
+
+      if (payload.token) {
+        api.defaults.headers.common["Authorization"] = `Bearer ${payload.token}`;
+        // console.log({ api })
+        // api.headers["Authorization"] = payload.token;
+      }
+      localStorage.setItem("auth", JSON.stringify(payload))
     },
     setUser: (state, { payload }) => {
       state.user = payload;
-      // localStorage.setItem("user", JSON.stringify(payload))
+      localStorage.setItem("user", JSON.stringify(payload))
     },
     setCompany: (state, { payload }) => {
       state.company = payload;
-      // localStorage.setItem("company", JSON.stringify(payload))
+      localStorage.setItem("company", JSON.stringify(payload))
     }
   }
 })
