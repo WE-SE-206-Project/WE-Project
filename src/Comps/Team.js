@@ -26,10 +26,10 @@ export default function Team() {
         </div>
         <div id="team" className="mt5">
           <TeamCard name="Rana Muhammad Ibrahim" designation="Mern stack developer" pic="ibrahim" />
-            <TeamCard name="Hamza Shahab" designation="Mern stack developer" pic="hamza" />
-            <TeamCard name="Zoha Akram" designation="Mern stack developer" pic="ibrahim" />
-            <TeamCard name="Muhammad Mubeen Rasheed" designation="Mern stack developer" pic="mubeen" />
-            </div>
+          <TeamCard name="Hamza Shahab" designation="Mern stack developer" pic="hamza" />
+          <TeamCard name="Zoha Akram" designation="Mern stack developer" pic="ibrahim" />
+          <TeamCard name="Muhammad Mubeen Rasheed" designation="Mern stack developer" pic="mubeen" />
+        </div>
         <Paper id="team-lower" className={classes.teamCard}>
           <h1>We made website building easier for you.</h1>
           <p>I will be the leader of a company that ends up being

@@ -8,6 +8,8 @@
     text-align: center;
     background-color: transparent;
     width: 300px;
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
 #member-name{
     margin-bottom: 10px;
@@ -25,8 +27,14 @@
     /* transform: scale(1.1); */
 }
 #team{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    display: flex;
+    /* grid-template-columns: repeat(auto-fill, mainmax(350px, 1fr));  */
+    align-items: center;
+    /* background-color: red; */
+    flex-direction: row;;
+    flex-wrap: wrap;
+    /* grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); */
+    justify-content: center;
 }
 #team-container{
     text-align: center;
@@ -43,19 +51,19 @@
 #team-lower{
     /* color: #fff; */
     /* background-color: teal; */
-    margin-top: 7rem;
+    margin-top: 4rem;
     padding: 19px;
     width: 80%;
     /* margin-left: 10%; */
     /* margin-right: 10%; */
-    margin-bottom: 7rem;
+    margin-bottom: 4rem;
     /* border-radius: 10px; */
     /* box-shadow: 3px 3px 4px #888888; */
     background: linear-gradient(90deg, #4abdac 25%, #dfdce3 99%);
     margin-left: auto;
     margin-right: auto;
 }
-@media screen and (min-width: 450px) {
+/* @media screen and (min-width: 450px) {
     #team{
         display: grid;
         grid-template-columns: 1fr ; 
@@ -79,4 +87,4 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr ; 
     }
-}
+} */
