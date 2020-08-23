@@ -38,10 +38,9 @@ export default function Services() {
           </div>
           <div className="back-text">
             <h1>Appointment Booking</h1>
-            <p>Here we are introducing the online appointment booking system for any system. It will give you 
-              lot of easiness and comfort in you busy life routine.
-            </p>
-            
+            <p>Introducing the online appointment booking system which will give you
+            lot of easiness and comfort in you busy life routine.</p>
+
           </div>
         </article>
 
@@ -55,7 +54,7 @@ export default function Services() {
           <div className="back-text">
             <h1>Online support</h1>
             <p>Our team will give you online support through email in order to manage and changing your appointment. </p>
-            
+
           </div>
         </article>
 
@@ -68,8 +67,8 @@ export default function Services() {
           </div>
           <div className="back-text">
             <h1>Feature</h1>
-            <p>We book appointments if any user want to book an appointment while we also book appointment 
-              through organization and organization can also control and manage appointments</p>
+            <p>We book appointments if any user want to book an appointment while we also book appointment
+              through organization.</p>
           </div>
         </article>
 

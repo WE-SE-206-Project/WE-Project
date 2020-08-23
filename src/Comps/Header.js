@@ -95,7 +95,7 @@ export default function Header() {
       <div className={classes.back} id="header">
         <h1 className={classes.heading}><span style={{ color: '#fc4a1a', fontWeight: 'bold' }}>SCHEDULE</span><br /><span>Your Visit</span></h1>
         {/* <EventIcon className={classes.icon} /> */}
-        <p className={classes.content}>Here on electronic media, book appointment easily on </p>
+        <p className={classes.content}>Appointment scheduling now made easy.</p>
       </div>
     </>
   )
