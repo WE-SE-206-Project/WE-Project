@@ -14,15 +14,19 @@ const styles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    flexDirection: 'row',
+    // flexWrap: 'wrap'
     // margin: theme.spacing(3)
   },
   card: {
     padding: theme.spacing(4),
-    width: '28%',
+    // width: '28%',
+    width: '300px',
     // margin: theme.spacing(3),
-    marginRight: theme.spacing(3),
+    marginRight: theme.spacing(2),
+    marginLeft: theme.spacing(2),
     marginTop: '-199px',
-    height: 300,
+    // height: 300,
     transition: 'all 0.3s ease-out',
     '&:hover': {
       transform: 'translateY(-10px)'
