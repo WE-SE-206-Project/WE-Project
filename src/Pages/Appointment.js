@@ -72,6 +72,7 @@ export default function Createappointment() {
   const appointments = useSelector(state => state.dashboard.appointments);
   const companies = useSelector(state => state.dashboard.companies);
   const [orgId, setOrgId] = useState(role === 'org' ? user.id : '');
+  const [timeError, setTimeError] = useState(false);
 
   useEffect(() => {
     if (err) setTimeout(() => setErr(false), 5000);
@@ -372,6 +373,18 @@ export default function Createappointment() {
                   Sorry, Error occurred please try again.
             </p>
               }
+              {
+                timeError
+                &&
+                <p style={{
+                  color: 'red',
+                  textAlign: 'center',
+                  marginTop: '5px',
+                  marginBottom: '5px',
+                }}>
+                  Sorry, this time slot has been taken. Kindly select new one.
+            </p>
+              }
               <br />
               {
                 success
@@ -382,7 +395,7 @@ export default function Createappointment() {
                   marginTop: '5px',
                   marginBottom: '5px',
                 }}>
-                  Sucessfully created your account.
+                  Sucessfully created your appointment.
             </p>
               }
 
