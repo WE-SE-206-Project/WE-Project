@@ -10,6 +10,7 @@
     /* padding: 20px 0 80px 0; */
     margin-top: -121px;
     padding-top: 131px;
+    padding-bottom: 30px;
 }
 /* #title{
     text-align: center;
@@ -119,6 +120,6 @@ color: black;
     #services{
         margin-top: -500px;
         padding-top: 525px;
-        padding-bottom: 50px;
+        
     }
 }
