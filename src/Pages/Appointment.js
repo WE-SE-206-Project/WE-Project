@@ -21,6 +21,7 @@ import { MenuItem, FormControl } from '@material-ui/core';
 import InputLabel from '@material-ui/core/InputLabel';
 import api from '../api/api';
 import Select from '@material-ui/core/Select';
+import { setAppointments } from '../redux/dashboard';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -79,6 +80,10 @@ export default function Createappointment() {
   }, [err, setErr])
 
   useEffect(() => {
+    if (timeError) setTimeout(() => setTimeError(false), 5000);
+  }, [timeError, setTimeError])
+
+  useEffect(() => {
     if (success) setTimeout(() => setSuccess(false), 5000);
   }, [success, setSuccess])
 
@@ -94,16 +99,7 @@ export default function Createappointment() {
 
   const handleSubmit = async () => {
 
-    console.log({
-      fName,
-      lName,
-      email,
-      phone,
-      reason,
-      address,
-      date,
-      orgId
-    })
+
     if (
       email.length > 0
       && !emailError
@@ -117,7 +113,16 @@ export default function Createappointment() {
       && orgId
     ) {
 
-
+      console.log({
+        fName,
+        lName,
+        email,
+        phone,
+        reason,
+        address,
+        date,
+        orgId
+      })
       // if (role === 'org') {
 
       setLoading(true)
@@ -132,16 +137,26 @@ export default function Createappointment() {
         schedule_at: date
       })
         .then(resp => {
-          // if (resp.data.org) {
-          // setActive(true);
-          // dispatch(setCompany({
-          //   ...user,
-          //   ...resp.data.org
-          // }))
-          // }
-          // else {
-          // setErr(true);
-          // }
+
+          if (resp.data === "Sorry, time slot not available!") {
+            setTimeError(true);
+          }
+          else if (resp.data.length > 0) {
+            setPhone("");
+            setEmail("");
+            setDate("");
+            setOrgId("");
+            setFName("");
+            setLName("");
+            setAddress("");
+            setReason("");
+            let newArr = appointments.concat({ ...resp.data[0] });
+            dispatch(setAppointments(newArr));
+            setSuccess(true);
+          }
+          else {
+            setErr(true);
+          }
           setLoading(false);
           console.log({ resp })
         })
@@ -150,39 +165,6 @@ export default function Createappointment() {
           setErr(true);
           setLoading(false)
         })
-
-      // }
-      // else if (role === 'user' && fName.length > 0 && lName.length > 0) {
-      //   setLoading(true)
-      //   await api.post('/users/update', {
-      //     email,
-      //     firstName: fName,
-      //     lastName: lName,
-      //     phone
-      //   })
-      //     .then(resp => {
-      //       if (resp.data.user) {
-      //         // setActive(true);
-      //         // dispatch(setUser({
-      //         //   ...user,
-      //         //   ...resp.data.user
-      //         // }))
-      //       }
-      //       else {
-      //         setErr(true);
-      //       }
-      //       setLoading(false);
-      //       // console.log({ resp })
-      //     })
-      //     .catch(err => {
-      //       console.error(err);
-      //       setErr(true);
-      //       setLoading(false)
-      //     })
-      // }
-
-
-
 
     }
   }
@@ -395,7 +377,7 @@ export default function Createappointment() {
                   marginTop: '5px',
                   marginBottom: '5px',
                 }}>
-                  Sucessfully created your appointment.
+                  Sucessfully created your appointment. You will shortly recieve confirmation email.
             </p>
               }
 
