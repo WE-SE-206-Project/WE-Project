@@ -71,13 +71,15 @@ export default function SignIn() {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  // const [emailError, setEmailError] = useState(false);
 
 
   useEffect(() => {
     setEmailError(validateEmail(email));
-    // console.log(validateEmail(email))
   }, [email, setEmail])
+
+  useEffect(() => {
+    if (err) setTimeout(() => setErr(false), 5000);
+  }, [err, setErr])
 
   const handleSubmit = async (e) => {
     if (email.length > 0 && !emailError && password.length > 0) {
@@ -234,13 +236,13 @@ export default function SignIn() {
                 </p>
               }
               <Grid container>
-                <Grid item xs>
+                {/* <Grid item xs>
                   <Link variant="body2" style={{
                     cursor: 'pointer'
                   }}>
                     Forgot password?
               </Link>
-                </Grid>
+                </Grid> */}
                 <Grid item>
                   <Link variant="body2" style={{
                     cursor: 'pointer'
