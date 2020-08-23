@@ -82,7 +82,7 @@ export default function Cards() {
 
       <Paper className={classes.card}>
 
-        <h1 id="card-title">Organiztion</h1>
+        <h1 id="card-title">Organization</h1>
         <br />
         <button class="button button1" onClick={() => {
           dispatch(setRole('org'));
