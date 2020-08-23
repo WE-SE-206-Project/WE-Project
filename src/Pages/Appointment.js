@@ -16,20 +16,11 @@ import EventIcon from '@material-ui/icons/Event';
 import validateEmail from '../features/validateEmail';
 import validatePhone from '../features/validatePhone';
 import Loader from 'react-loader-spinner';
-
-
-// function Copyright() {
-//   return (
-//     <Typography variant="body2" color="textSecondary" align="center">
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://material-ui.com/">
-//         Your Website
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
+import { useSelector, useDispatch } from 'react-redux';
+import { MenuItem, FormControl } from '@material-ui/core';
+import InputLabel from '@material-ui/core/InputLabel';
+import api from '../api/api';
+import Select from '@material-ui/core/Select';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -46,10 +37,16 @@ const useStyles = makeStyles((theme) => ({
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(3),
+    // width:
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  formControl: {
+    // margin: theme.spacing(1),
+    maxWidth: '400px',
+    width: '100%'
+  }
 }));
 
 export default function Createappointment() {
@@ -68,6 +65,22 @@ export default function Createappointment() {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const auth = useSelector(state => state.auth);
+  const [role, setRole] = useState(auth.company.id ? "org" : "user");
+  const dispatch = useDispatch();
+  const user = role === "org" ? auth.company : auth.user;
+  const appointments = useSelector(state => state.dashboard.appointments);
+  const companies = useSelector(state => state.dashboard.companies);
+  const [orgId, setOrgId] = useState(role === 'org' ? user.id : '');
+
+  useEffect(() => {
+    if (err) setTimeout(() => setErr(false), 5000);
+  }, [err, setErr])
+
+  useEffect(() => {
+    if (success) setTimeout(() => setSuccess(false), 5000);
+  }, [success, setSuccess])
+
   useEffect(() => {
     setEmailError(validateEmail(email));
     // console.log(validateEmail(email))
@@ -78,7 +91,18 @@ export default function Createappointment() {
     // console.log(validatePhone(phone))
   }, [phone, setPhone])
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+
+    console.log({
+      fName,
+      lName,
+      email,
+      phone,
+      reason,
+      address,
+      date,
+      orgId
+    })
     if (
       email.length > 0
       && !emailError
@@ -89,16 +113,76 @@ export default function Createappointment() {
       && address.length > 0
       && reason.length > 0
       && date.length > 0
+      && orgId
     ) {
-      console.log({
-        fName,
-        lName,
-        email,
+
+
+      // if (role === 'org') {
+
+      setLoading(true)
+      await api.post('/api/create', {
         phone,
-        reason,
+        email,
+        firstName: fName,
+        lastName: lName,
         address,
-        date
+        orgId,
+        reason,
+        schedule_at: date
       })
+        .then(resp => {
+          // if (resp.data.org) {
+          // setActive(true);
+          // dispatch(setCompany({
+          //   ...user,
+          //   ...resp.data.org
+          // }))
+          // }
+          // else {
+          // setErr(true);
+          // }
+          setLoading(false);
+          console.log({ resp })
+        })
+        .catch(err => {
+          console.error(err);
+          setErr(true);
+          setLoading(false)
+        })
+
+      // }
+      // else if (role === 'user' && fName.length > 0 && lName.length > 0) {
+      //   setLoading(true)
+      //   await api.post('/users/update', {
+      //     email,
+      //     firstName: fName,
+      //     lastName: lName,
+      //     phone
+      //   })
+      //     .then(resp => {
+      //       if (resp.data.user) {
+      //         // setActive(true);
+      //         // dispatch(setUser({
+      //         //   ...user,
+      //         //   ...resp.data.user
+      //         // }))
+      //       }
+      //       else {
+      //         setErr(true);
+      //       }
+      //       setLoading(false);
+      //       // console.log({ resp })
+      //     })
+      //     .catch(err => {
+      //       console.error(err);
+      //       setErr(true);
+      //       setLoading(false)
+      //     })
+      // }
+
+
+
+
     }
   }
 
@@ -109,13 +193,13 @@ export default function Createappointment() {
         loading
           ?
           <Loader type="TailSpin" color="#4abdac" height={100} width={80}
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            alignContent: 'center',
-            marginTop:'35vh',
-        }}
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              alignContent: 'center',
+              marginTop: '35vh',
+            }}
           />
           :
           <div className={classes.paper}>
@@ -201,6 +285,33 @@ export default function Createappointment() {
                   // autoFocus
                   />
                 </Grid>
+                {
+                  role === 'user'
+                  &&
+                  <Grid item xs={12}>
+                    <FormControl variant="outlined" className={classes.formControl}>
+                      <InputLabel id="demo-simple-select-outlined-label">Select organization</InputLabel>
+                      <Select
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
+                        value={orgId}
+                        onChange={(e) => setOrgId(e.target.value)}
+                        label="Select organization"
+                        variant="outlined"
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        {
+                          companies.map(c => (
+                            <MenuItem value={c.id}>{c.name}</MenuItem>
+                          ))
+                        }
+                      </Select>
+                    </FormControl>
+                  </Grid>
+                }
+
                 <Grid item xs={12}>
                   <TextField
                     variant="outlined"
@@ -254,9 +365,9 @@ export default function Createappointment() {
                 &&
                 <p style={{
                   color: 'red',
-                  textAlign:'center',
-                  marginTop:'5px',
-                  marginBottom:'5px',
+                  textAlign: 'center',
+                  marginTop: '5px',
+                  marginBottom: '5px',
                 }}>
                   Sorry, Error occurred please try again.
             </p>
@@ -267,9 +378,9 @@ export default function Createappointment() {
                 &&
                 <p style={{
                   color: 'green',
-                  textAlign:'center',
-                  marginTop:'5px',
-                  marginBottom:'5px',
+                  textAlign: 'center',
+                  marginTop: '5px',
+                  marginBottom: '5px',
                 }}>
                   Sucessfully created your account.
             </p>
