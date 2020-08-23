@@ -85,7 +85,7 @@ function App() {
       })
       .catch(err => {
         setLoading1(false);
-        dispatch(logout())
+        // dispatch(logout())
         // setErr1(true);
       })
   }
@@ -109,7 +109,7 @@ function App() {
       })
       .catch(err => {
         setLoading1(false);
-        dispatch(logout())
+        // dispatch(logout())
         // setErr1(true);
       })
   }
