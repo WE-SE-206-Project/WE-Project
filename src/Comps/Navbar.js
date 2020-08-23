@@ -89,6 +89,7 @@ export default function Navbar() {
               !auth.status
                 ?
                 <>
+                  <Button className={classes.btn} onClick={() => history.push('/')}>Home</Button>
                   <Button className={classes.btn} onClick={() => history.push('/about_us')}>About Us</Button>
                   <Button className={classes.btn} onClick={() => history.push('/contact_us')}>Contact Us</Button>
                 </>
@@ -118,6 +119,10 @@ export default function Navbar() {
                     !auth.status
                       ?
                       <>
+                        <MenuItem onClick={() => {
+                          handleClose();
+                          history.push('/');
+                        }}>Home</MenuItem>
                         <MenuItem onClick={() => {
                           handleClose();
                           history.push('/about_us');
