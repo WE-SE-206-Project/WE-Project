@@ -31,6 +31,7 @@ import Loader from 'react-loader-spinner';
 
 
 
+
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -123,8 +124,7 @@ function App() {
             }
           </>
 }
-
-     
+   
     </ThemeProvider>
 
   );
