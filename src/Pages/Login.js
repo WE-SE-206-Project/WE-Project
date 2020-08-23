@@ -81,9 +81,9 @@ export default function SignIn() {
 
   const handleSubmit = async (e) => {
     if (email.length > 0 && !emailError && password.length > 0) {
-      console.log({
-        email, password
-      })
+      // console.log({
+      //   email, password
+      // })
       // if (role === 'org') {
       setLoading(true)
       await api.post(`/${role === 'org' ? "org" : "users"}/login`, {
@@ -131,7 +131,7 @@ export default function SignIn() {
             }));
             localStorage.setItem(role === 'org' ? "company" : 'user', JSON.stringify(resp.data.results[0]));
 
-            console.log(localStorage)
+            // console.log(localStorage)
 
             history.push('/')
           }
@@ -162,14 +162,14 @@ export default function SignIn() {
       {
         loading
           ?
-          <Loader type="TailSpin" color="#4abdac"  width={80}
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            alignContent: 'center',
-            marginTop:'35vh',
-        }}
+          <Loader type="TailSpin" color="#4abdac" width={80}
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              alignContent: 'center',
+              marginTop: '35vh',
+            }}
           />
           :
           <div className={classes.paper}>
@@ -226,9 +226,9 @@ export default function SignIn() {
                 &&
                 <p style={{
                   color: 'red',
-                  textAlign:'center',
-                  marginTop:'5px',
-                  marginBottom:'5px',
+                  textAlign: 'center',
+                  marginTop: '5px',
+                  marginBottom: '5px',
                 }}>
                   Invalid credentials.
                 </p>

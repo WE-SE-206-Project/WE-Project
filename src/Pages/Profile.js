@@ -19,10 +19,10 @@ import {
 import { useHistory } from 'react-router-dom';
 import validateEmail from '../features/validateEmail';
 import validatePhone from '../features/validatePhone';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import api from '../api/api';
 import Loader from 'react-loader-spinner';
-
+import { setUser, setCompany } from '../redux/auth';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -64,7 +64,7 @@ export default function Profile({ loading, setLoading }) {
   const [success, setSuccess] = useState(false);
   // const [loading, setLoading] = useState(false);
   const [active, setActive] = useState(true);
-
+  const dispatch = useDispatch();
 
 
   useEffect(() => {
@@ -94,16 +94,18 @@ export default function Profile({ loading, setLoading }) {
           name
         })
           .then(resp => {
-
-            // setSuccess(true)
-            setLoading(false)
-            // setName("");
-            // setPhone("");
-            // setEmail("");
-            // setPassword("");
-            setActive(true)
-
-            console.log({ resp })
+            if (resp.data.org) {
+              setActive(true);
+              dispatch(setCompany({
+                ...user,
+                ...resp.data.org
+              }))
+            }
+            else {
+              setErr(true);
+            }
+            setLoading(false);
+            // console.log({ resp })
           })
           .catch(err => {
             console.error(err);
@@ -121,16 +123,18 @@ export default function Profile({ loading, setLoading }) {
           phone
         })
           .then(resp => {
-
-            // setSuccess(true)
+            if (resp.data.user) {
+              setActive(true);
+              dispatch(setUser({
+                ...user,
+                ...resp.data.user
+              }))
+            }
+            else {
+              setErr(true);
+            }
             setLoading(false);
-            setActive(true)
-            // setFName("");
-            // setLName("");
-            // setPhone("");
-            // setEmail("");
-            // setPassword("");
-            console.log({ resp })
+            // console.log({ resp })
           })
           .catch(err => {
             console.error(err);
