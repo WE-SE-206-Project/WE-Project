@@ -79,6 +79,10 @@ export default function SignIn() {
     // console.log(validateEmail(email))
   }, [email, setEmail])
 
+  useEffect(() => {
+    if (err) setTimeout(() => setErr(false), 5000);
+  }, [err, setErr])
+
   const handleSubmit = async (e) => {
     if (email.length > 0 && !emailError && password.length > 0) {
       // console.log({
