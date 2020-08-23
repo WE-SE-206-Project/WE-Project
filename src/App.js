@@ -7,7 +7,9 @@ import {
   ContactUs,
   Appointment,
   Aboutus,
-  Profile
+  Profile,
+  Termsandconditions,
+  PrivacyPolicy
 } from './Pages';
 import {
   Switch,
@@ -197,6 +199,8 @@ function App() {
                   <Route path="/register"><Register /></Route>
                   <Route path="/contact_us"><ContactUs /></Route>
                   <Route path="/about_us"><Aboutus /></Route>
+                  <Route path="/tos"><Termsandconditions /></Route>
+                  <Route path="/privacy"><PrivacyPolicy /></Route>
                   <Route path="/"><Landing /></Route>
                 </Switch>
                 :

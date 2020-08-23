@@ -8,6 +8,7 @@ import {
   IconButton,
   Divider
 } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 
 const style = makeStyles(theme => ({
   footermain: {
@@ -42,12 +43,13 @@ const style = makeStyles(theme => ({
 
 export default function Footer() {
   const classes = style();
+  const history = useHistory();
   return (
     <div className={classes.footermain} >
       <Typography variant="body2" color="primary" className={classes.text}>Copyright © 2020 Appointement Scheduler inc. All rights reserved.</Typography>
       <div className={classes.list}>
-        <Button className={classes.items}><Typography variant="body2" color="primary" className={classes.text}>Privacy Policy</Typography></Button>
-        <Button className={classes.items}><Typography variant="body2" color="primary" className={classes.text}>Terms and Conditions</Typography></Button>
+        <Button className={classes.items}><Typography variant="body2" color="primary" className={classes.text} onClick={() => history.push('/privacy')}>Privacy Policy</Typography></Button>
+        <Button className={classes.items}><Typography variant="body2" color="primary" className={classes.text} onClick={() => history.push('/tos')}>Terms and Conditions</Typography></Button>
       </div>
     </div>
   )

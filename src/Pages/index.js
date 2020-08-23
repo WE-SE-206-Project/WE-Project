@@ -5,6 +5,8 @@ import ContactUs from './ContactUs';
 import Appointment from './Appointment';
 import Aboutus from './Aboutus';
 import Profile from './Profile';
+import Termsandconditions from './Termsandconditions';
+import PrivacyPolicy from './PrivacyPolicy';
 
 export {
   Landing,
@@ -13,5 +15,7 @@ export {
   ContactUs,
   Appointment,
   Aboutus,
-  Profile
+  Profile,
+  Termsandconditions,
+  PrivacyPolicy
 }

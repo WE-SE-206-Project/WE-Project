@@ -16,13 +16,16 @@
     margin: 90px;
 }
 .termsandconditions{
+    margin-top: 110px;
     padding:6rem;
-    padding-top: 2rem;
+    padding-top: 0rem;
+    padding-bottom: 2rem;
     text-align: justify;
 }
 @media screen and (max-width: 520px) {
     .termsandconditions{
-        padding:2rem;
-        padding-top: 2rem;
+        padding-left:2rem;
+        padding-right: 2rem;
+        /* padding-top: 2rem; */
     }
 }
