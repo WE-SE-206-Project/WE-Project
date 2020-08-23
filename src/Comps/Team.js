@@ -20,8 +20,7 @@ export default function Team() {
       <div id="team-container">
         <div id="team-bio1">
           <h1>The Amazing Team</h1>
-          <p className="f4 light-silver">Our team is very exciting and warm hearted to accept challenges and to perform work according
-          in order to satisfy customers
+          <p className="f4 light-silver">Our team is very exciting and warm hearted to accept challenges and to perform work.
                 </p>
         </div>
         <div id="team" className="mt5">
@@ -65,9 +64,8 @@ export default function Team() {
             linkdin="https://us04web.zoom.us/j/71084508100?pwd=WWgyVHd2a2c4TmprcVQ5MWZxd2JQdz09"/>
             </div>
         <Paper id="team-lower" className={classes.teamCard}>
-          <h1>We made website building easier for you.</h1>
-          <p>I will be the leader of a company that ends up being
-                worth billions of dollars, because I got the answers. I understand culture.</p>
+          <h1>The Crusaiders team at its beginning</h1>
+          <p>Fully motivated team who is always ready to learn and to make user friendly websites.</p>
         </Paper>
       </div>
     </div>
