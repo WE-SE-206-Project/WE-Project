@@ -71,12 +71,10 @@ export default function SignIn() {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  // const [emailError, setEmailError] = useState(false);
 
 
   useEffect(() => {
     setEmailError(validateEmail(email));
-    // console.log(validateEmail(email))
   }, [email, setEmail])
 
   useEffect(() => {
