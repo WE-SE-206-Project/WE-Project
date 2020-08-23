@@ -55,7 +55,7 @@ export default function Header() {
       <div className={classes.back}>
         <Typography variant="h2" className={classes.heading}><span style={{ color: '#fc4a1a', fontWeight: 'bold' }}>SCHEDULE</span><br /><span style={{ marginLeft: '30px' }}>Your Visit</span></Typography>
         {/* <EventIcon className={classes.icon} /> */}
-        <Typography variant="h5" className={classes.content}>Appointment Scheduling System content</Typography>
+        <Typography variant="h5" className={classes.content}>Here on electronic media, book appointment easily on </Typography>
       </div>
     </>
   )
