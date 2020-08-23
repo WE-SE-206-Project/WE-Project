@@ -50,9 +50,9 @@ const styles = makeStyles(theme => ({
       width: '250px'
     }
 
-    
+
   }
-  
+
 }))
 
 export default function Cards() {
