@@ -101,7 +101,7 @@ export default function StickyHeadTable() {
   const companies = useSelector(state => state.dashboard.companies);
 
   const findName = () => {
-    // console.log({ companies, id: Number(id) })
+    console.log({ companies, appointments })
     // let newArr = appointments.map(a => {
     //   return { ...a, orgName: companies.filter(c => c.id === Number(a.id))[0].name }
     // })
@@ -113,7 +113,7 @@ export default function StickyHeadTable() {
     }
     else if (role === 'user') {
       newArr = appointments.map(a => {
-        return { ...a, orgName: companies.filter(c => c.id === Number(a.orgId))[0].name }
+        return { ...a, orgName: companies.filter(c => c.id === Number(a.orgId))[0]?.name }
       });
     }
     setRows(newArr);
